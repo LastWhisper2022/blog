@@ -6,8 +6,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 const Title = '三隻恶犬';
 const config: Config = {
   title: Title,
-  tagline: '记录生活，分享技术',
-  favicon: 'img/favicon.ico',
+  tagline: '记录和分享',
+  favicon: 'svg/favicon.ico',
   future: {
     v4: true, 
   },
@@ -59,14 +59,14 @@ const config: Config = {
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {
       defaultMode: 'light',      // 默认主题：light | dark
-      disableSwitch: false,      // 是否禁用切换按钮
+      disableSwitch: true,      // 是否禁用切换按钮
       respectPrefersColorScheme: false, // 跟随系统深浅色
     },
     navbar: {
       title: Title,
       logo: {
         alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        src: 'svg/logo.gif',
       },
       items: [
         {to: '/blog', label: '博客', position: 'right'},
@@ -76,6 +76,7 @@ const config: Config = {
           position: 'right',
           label: '文档',
         },
+        {to: '/about', label: '关于', position: 'right'},
         {
           type:'search',
           position:'right',

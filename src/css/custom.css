@@ -1,38 +1,72 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@layer utilities {
-  .tw-debug {
-    border: 5px solid red;
-  }
+
+/* 移除 navbar 边框和阴影 */
+.navbar {
+  border-bottom: none !important;
+  box-shadow: none !important;
 }
 
-/* You can override the default Infima variables here. */
+/* ===== 浅色主题：黑灰白 ===== */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  /* 主色：深灰（代替原来的绿色） */
+  --ifm-color-primary: #333333;
+  --ifm-color-primary-dark: #222222;
+  --ifm-color-primary-darker: #1a1a1a;
+  --ifm-color-primary-darkest: #0f0f0f;
+  --ifm-color-primary-light: #4d4d4d;
+  --ifm-color-primary-lighter: #666666;
+  --ifm-color-primary-lightest: #808080;
+
+  /* 背景 & 文字 */
+  --ifm-background-color: #ffffff;
+  --ifm-color-emphasis-0: #ffffff;   /* 最浅背景 */
+  --ifm-color-emphasis-100: #f8f9fa; /* 卡片/区块背景 */
+  --ifm-color-emphasis-200: #e9ecef;
+  --ifm-color-emphasis-300: #dee2e6;
+  --ifm-color-emphasis-400: #ced4da;
+  --ifm-color-emphasis-500: #adb5bd; /* 中灰 */
+  --ifm-color-emphasis-600: #6c757d;
+  --ifm-color-emphasis-700: #495057;
+  --ifm-color-emphasis-800: #343a40;
+  --ifm-color-emphasis-900: #212529; /* 接近纯黑的文字 */
+
+  /* 文字默认色 */
+  --ifm-font-color-base: #212529;
+
+  /* 代码相关 */
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.06);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* ===== 深色主题：深灰 + 白文字 ===== */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  /* 主色：浅灰（用于按钮、链接等） */
+  --ifm-color-primary: #cccccc;
+  --ifm-color-primary-dark: #bbbbbb;
+  --ifm-color-primary-darker: #aaaaaa;
+  --ifm-color-primary-darkest: #999999;
+  --ifm-color-primary-light: #dddddd;
+  --ifm-color-primary-lighter: #eeeeee;
+  --ifm-color-primary-lightest: #f5f5f5;
+
+  /* 背景 & 文字 */
+  --ifm-background-color: #121212;
+  --ifm-color-emphasis-0: #121212;   /* 页面背景 */
+  --ifm-color-emphasis-100: #1e1e1e; /* 卡片背景 */
+  --ifm-color-emphasis-200: #2a2a2a;
+  --ifm-color-emphasis-300: #333333;
+  --ifm-color-emphasis-400: #404040;
+  --ifm-color-emphasis-500: #555555;
+  --ifm-color-emphasis-600: #999999;
+  --ifm-color-emphasis-700: #bbbbbb;
+  --ifm-color-emphasis-800: #dddddd;
+  --ifm-color-emphasis-900: #ffffff; /* 白色文字 */
+
+  /* 文字默认色 */
+  --ifm-font-color-base: #f0f0f0;
+
+  /* 代码高亮行背景 */
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
 }
