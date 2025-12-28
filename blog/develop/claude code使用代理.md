@@ -1,17 +1,21 @@
 ---
-title: 如何设计一个可维护的前端架构
-date: 2025-01-01
+title: claude code 使用代理
+description: 摘要
+slug: claude code
+tags: [blog]
+keywords: [develop, cloud]
+date: 2025-01-10
 ---
-
 
 <!-- truncate -->
 
-## 安装claude-code
-
+## 1.安装依赖
+claude-code
+```shell
 npm install -g @anthropic-ai/claude-code
-
-## 安装 claude-code-router
 ```
+claude-code-router
+```shell
 npm install -g @musistudio/claude-code-router
 ```
 验证安装
@@ -19,9 +23,7 @@ npm install -g @musistudio/claude-code-router
 ccr -v
 ```
 
-## 配置 CCR
-
-
+## 2.配置CCR
 创建或编辑 CCR 配置文件（通常位于 `~/.claude-code-router/config.json`）：
 ```json
 {
@@ -85,7 +87,7 @@ ccr -v
 }
 ```
 
-## 启动 CCR 服务
+## 3.启动 CCR 服务
 ```
 ccr restart
 ```
@@ -96,7 +98,7 @@ ccr restart
 ccr ui
 ```
 
-## 配置claude code为本地
+## 4.配置claude code为本地
 直接在trae帮忙即可
 
 ```
@@ -104,7 +106,7 @@ export ANTHROPIC_BASE_URL="http://127.0.0.1:3456/"
 export ANTHROPIC_AUTH_TOKEN="sk-c0e7fed7b-你的自定义Key"
 ```
 
-## 在trae里面使用
+## 5.在trae里面使用
 
 1. 安装claude插件
 2. 设置改为如下配置

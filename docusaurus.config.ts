@@ -5,16 +5,13 @@ import type * as Preset from "@docusaurus/preset-classic";
 const Title = "三隻恶犬";
 const config: Config = {
   title: "三隻恶犬",
-  url: "https://your-docusaurus-site.example.com",//网站域名
-  baseUrl: '/',
+  url: "https://your-docusaurus-site.example.com", //网站域名
+  baseUrl: "/",
   favicon: "svg/favicon.ico",
-  organizationName: "MuscleProgrammerXiao", 
-  projectName: "blog", 
-  onBrokenLinks: "warn",// throw,warn,ignore
-  plugins: [
-    "./src/plugins/tailwind-config.js",
-
-  ],
+  organizationName: "MuscleProgrammerXiao",
+  projectName: "blog",
+  onBrokenLinks: "warn", // throw,warn,ignore
+  plugins: ["./src/plugins/tailwind-config.js"],
   themeConfig: {
     image: "img/docusaurus-social-card.jpg",
     colorMode: {
@@ -92,21 +89,25 @@ const config: Config = {
       "classic",
       {
         docs: {
-          path: 'docs',
+          path: "docs",
           sidebarPath: "./sidebars.ts",
         },
         blog: {
-          routeBasePath: 'blog',
-          path: 'blog',
+          routeBasePath: "blog",
+          path: "blog",
           postsPerPage: 10,
+          blogSidebarTitle: "全部文章",
+          authorsMapPath: "authors.yml",
           feedOptions: {
-            type: 'all',
-            title: '我的技术博客',
-            description: '分享前端开发经验与最佳实践',
+            type: "all",
+            title: "我的技术博客",
+            description: "分享前端开发经验与最佳实践",
             copyright: `Copyright © ${new Date().getFullYear()} Your Name`,
-            language: 'zh-CN',
+            language: "zh-CN",
             limit: 20,
           },
+          // showLastUpdateTime: true,
+          // showLastUpdateAuthor: true,
         },
         theme: {
           customCss: "./src/css/custom.css",
