@@ -5,8 +5,8 @@ import type { GiscusConfig } from './src/components/Comment'
 const Title = "三隻恶犬";
 const config: Config = {
   title: "三隻恶犬",
-  url: "https://your-docusaurus-site.example.com", //网站域名
-  baseUrl: "/",
+  url: "https://lastwhisper.online", //网站域名
+  baseUrl: "/blog/",
   favicon: "svg/favicon.ico",
   organizationName: "MuscleProgrammerXiao",
   projectName: "blog",
