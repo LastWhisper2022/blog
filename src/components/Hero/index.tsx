@@ -20,7 +20,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            欢迎来到我的博客 test
+            欢迎来到我的博客
           </motion.h1>
           <motion.p
             className="tw-text-lg md:tw-text-xl tw-text-gray-600"
