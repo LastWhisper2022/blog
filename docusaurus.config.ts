@@ -11,7 +11,17 @@ const config: Config = {
   organizationName: "MuscleProgrammerXiao",
   projectName: "blog",
   onBrokenLinks: "warn", // throw,warn,ignore
-  plugins: [],
+  plugins: [
+    [
+      "@easyops-cn/docusaurus-search-local",
+      {
+        hashed: true,
+        language: ["en", "zh"],
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+      },
+    ],
+  ],
   themeConfig: {
     image: "img/docusaurus-social-card.jpg",
     colorMode: {

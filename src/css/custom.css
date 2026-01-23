@@ -78,3 +78,72 @@
   --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
 }
 
+/* 移动端导航栏优化：汉堡菜单移至右侧，并显示标题 */
+@media screen and (max-width: 996px) {
+  /* 1. 容器相对定位，为汉堡菜单提供定位基准 */
+  .navbar__inner {
+    position: relative !important;
+  }
+
+  /* 2. 汉堡菜单绝对定位到最右侧 */
+  .navbar__toggle {
+    position: absolute !important;
+    top: 50% !important;
+    right: 0 !important;
+    transform: translateY(-50%) !important;
+    display: block !important;
+    z-index: 200 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* 3. 左侧 Item 容器（包含 Brand 和 Toggle DOM） */
+  .navbar__items {
+    /* 移除可能的左侧 padding/margin */
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  /* 4. Brand（Logo + Title） */
+  .navbar__brand {
+    /* 确保靠左 */
+    margin-left: 0 !important;
+    margin-right: auto !important; /* 占据左侧剩余空间，或者只是靠左 */
+    display: flex !important;
+    align-items: center !important;
+    z-index: 10 !important;
+    position: relative !important;
+  }
+
+  /* 5. 强制显示标题 */
+  .navbar__title {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--ifm-navbar-link-color);
+  }
+
+  /* 6. 右侧 Items 容器（搜索框、GitHub等） */
+  /* 使用 :last-child 或者更宽泛的选择器来确保选中 */
+  .navbar__items.navbar__items--right {
+    /* 使用 margin-right 给绝对定位的汉堡菜单留出空间 */
+    /* 汉堡菜单大约宽40px，加上一定的安全距离 */
+    margin-right: 48px !important; 
+    padding-right: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  
+  /* 如果 .navbar__items--right 没有生效，尝试直接给内部最后一个元素加 margin */
+  .navbar__items--right > *:last-child {
+      margin-right: 20px !important;
+  }
+
+  /* 针对搜索按钮的特定类名可能不固定，使用属性选择器或更通用的方式 */
+  div[class^="navbarSearchContainer"] {
+     margin-right: 10px !important;
+  }
+}
+
