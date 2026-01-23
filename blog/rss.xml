@@ -64,7 +64,9 @@
 </ol>
 <p>你需要记个日历提醒（比如 2026年4月10日左右），到时候再运行一遍今天这个命令：
 sudo certbot certonly --manual --preferred-challenges dns -d lastwhisper.online -d <a href="http://www.lastwhisper.online/" target="_blank" rel="noopener noreferrer" class="">www.lastwhisper.online</a></p>
-<p>cat /var/log/blog_deploy.log</p>]]></content:encoded>
+<p>cat /var/log/blog_deploy.log
+手动跑脚本
+/root/deploy_blog.sh</p>]]></content:encoded>
             <category>技术</category>
             <category>服务器</category>
             <category>部署</category>
