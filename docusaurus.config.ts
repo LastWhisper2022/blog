@@ -2,9 +2,9 @@ import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 import type { GiscusConfig } from './src/components/Comment'
-const Title = "三隻恶犬";
+const Title = "隻恶";
 const config: Config = {
-  title: "三隻恶犬",
+  title: "隻恶",
   url: "https://lastwhisper.online", //网站域名
   baseUrl: "/",
   favicon: "svg/favicon.ico",
@@ -12,6 +12,7 @@ const config: Config = {
   projectName: "blog",
   onBrokenLinks: "warn", // throw,warn,ignore
   plugins: [
+    "./src/plugins/tailwind-config.js",
     [
       "@easyops-cn/docusaurus-search-local",
       {
@@ -37,6 +38,7 @@ const config: Config = {
       },
       items: [
         { to: "/blog", label: "博客", position: "right" },
+        { to: "/project", label: "作品", position: "right" },
         { to: "/about", label: "关于", position: "right" },
         {
           type: "search",

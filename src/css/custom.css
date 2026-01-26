@@ -10,14 +10,14 @@
 
 /* ===== 浅色主题：冷静蓝灰 ===== */
 :root {
-  /* ===== 主色（Blue Gray）===== */
-  --ifm-color-primary: #3b82f6;        /* 主按钮 / 链接 */
-  --ifm-color-primary-dark: #2563eb;
-  --ifm-color-primary-darker: #1d4ed8;
-  --ifm-color-primary-darkest: #1e40af;
-  --ifm-color-primary-light: #60a5fa;
-  --ifm-color-primary-lighter: #93c5fd;
-  --ifm-color-primary-lightest: #bfdbfe;
+  /* ===== 主色（水墨青 - Ink Cyan）===== */
+  --ifm-color-primary: #2c5364;        /* 深墨青 */
+  --ifm-color-primary-dark: #274b5a;
+  --ifm-color-primary-darker: #254755;
+  --ifm-color-primary-darkest: #1e3a46;
+  --ifm-color-primary-light: #315b6e;
+  --ifm-color-primary-lighter: #336073;
+  --ifm-color-primary-lightest: #3a6d83;
 
   /* ===== 背景体系 ===== */
   --ifm-background-color: #ffffff;     /* 页面背景（微灰白） */
@@ -49,14 +49,14 @@
 
 /* ===== 深色主题：深灰 + 白文字 ===== */
 [data-theme='dark'] {
-  /* 主色：浅灰（用于按钮、链接等） */
-  --ifm-color-primary: #cccccc;
-  --ifm-color-primary-dark: #bbbbbb;
-  --ifm-color-primary-darker: #aaaaaa;
-  --ifm-color-primary-darkest: #999999;
-  --ifm-color-primary-light: #dddddd;
-  --ifm-color-primary-lighter: #eeeeee;
-  --ifm-color-primary-lightest: #f5f5f5;
+  /* 主色：月白青（Moonlight Cyan） */
+  --ifm-color-primary: #8cb6c0;
+  --ifm-color-primary-dark: #7ea3ac;
+  --ifm-color-primary-darker: #779aa2;
+  --ifm-color-primary-darkest: #627f85;
+  --ifm-color-primary-light: #9ac9d4;
+  --ifm-color-primary-lighter: #a1d2de;
+  --ifm-color-primary-lightest: #b5eaf8;
 
   /* 背景 & 文字 */
   --ifm-background-color: #121212;
@@ -147,3 +147,17 @@
   }
 }
 
+/* ===== Project Ticker Animation & Styles ===== */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.33%); } /* 因为复制了3份，移动1/3即可无缝循环 */
+}
+
+.hover\:tw-pause-animation:hover {
+  animation-play-state: paused !important;
+}
+
+.tw-mask-image-linear-gradient {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}

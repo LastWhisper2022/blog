@@ -1,0 +1,82 @@
+---
+title: AI 智能财报录入
+description: 智能化的财务报表录入与管理系统，旨在通过对话式交互（Conversational UI）和自动化工具，简化复杂的财务数据录入流程。
+hide_table_of_contents: false
+---
+
+import { Icon } from "@iconify/react";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import ImagePreview from "@site/src/components/ImagePreview";
+
+# AI 智能财报录入介绍
+
+<div className="tw-flex tw-gap-4 tw-mb-8">
+  <a 
+    href="https://github.com/LastWhisper2022/finance-copilot-web" 
+    target="_blank"
+    className="tw-flex tw-items-center tw-gap-2 tw-px-2  tw-bg-gray-900 tw-text-white tw-rounded-lg tw-font-medium hover:tw-bg-gray-700 hover:tw-text-white tw-transition-colors no-underline"
+  >
+    <Icon icon="ri:github-fill" className="tw-w-5 tw-h-5" />
+    <p className="tw-my-0">GitHub 仓库</p>
+  </a>
+  <a 
+    href="https://finance.lastwhisper.online/" 
+    target="_blank"
+    className="tw-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-bg-ink-600 tw-text-white tw-rounded-lg tw-font-medium hover:tw-bg-ink-700 hover:tw-text-white tw-transition-colors no-underline"
+  >
+    <Icon icon="ri:global-line" className="tw-w-5 tw-h-5" />
+    <p className="tw-my-0">在线预览</p>
+  </a>
+</div>
+
+### 🌱 项目介绍
+**Finance Copilot Web** 是一款智能化的财务报表录入与管理系统，旨在通过对话式交互（Conversational UI）和自动化工具，简化复杂的财务数据录入流程。系统采用 Next.js 16 构建，集成了 OCR 识别、智能校验、AI 报告生成等功能，为用户提供从“客户选择”到“报表完成”的全流程辅助。
+
+### 🌱 核心流程
+项目围绕 **“5步录入法”** 进行设计，确保数据录入的准确性与规范性：
+1.  **选择客户**：从客户列表中选择需要录入的公司客户。
+2.  **填写基本信息**：录入报表性质、周期、类型及审计信息（事务所、审计意见等）。
+3.  **上传识别报表**（可选）：支持扫描仪、Excel、PDF、图片等多种格式导入，利用 OCR 技术自动提取数据。
+4.  **校验报表**：
+    *   **影像/数据对照**：左侧展示报表影像（支持缩放、旋转、分页），右侧进行数据核对。
+    *   **智能平衡校验**：系统自动检测科目间的计算关系（如：资产=负债+所有者权益）。
+5.  **完成录入**：最终确认并生成正式记录。
+
+### 🌱 核心功能亮点
+*   **对话式交互 (Chat UI)**：
+    *   采用 ChatContainer 架构，通过自然语言或快捷卡片（Quick Actions）引导用户完成操作。
+    *   支持步骤流转控制，通过 `use-chat` hook 管理录入进度。
+*   **强大的报表管理**：
+    *   支持多种报表类型（小企业/企业2019版等）和周期（年/季/月报）。
+    *   状态全周期追踪（已确认/未确认、审计状态）。
+*   **可视化校验工作台**：
+    *   提供分屏视图，左侧影像查看器支持 Excel 预览及图片处理（拖拽、高亮）。
+    *   右侧动态表单支持“录入项”、“计算项”和“其他项”的智能区分与联动。
+*   **AI 赋能**：
+    *   **AI 报告生成**：异步任务生成专业的财务分析报告，支持状态追踪与下载。
+    *   **OCR 辅助**：自动识别报表科目与金额，减少人工录入成本。
+
+### 🌱 技术架构
+该项目基于现代化的前端技术栈构建，注重性能与开发体验：
+
+*   **核心框架**：Next.js 16.1.1 (App Router) + React 19
+*   **开发语言**：TypeScript
+*   **样式方案**：Tailwind CSS v4 + Shadcn UI (基于 Radix UI)
+*   **状态管理**：Zustand (支持持久化存储，管理 Report 和 Chat 状态)
+*   **API 模拟**：MSW (Mock Service Worker) 实现完善的前端独立开发环境
+*   **图标库**：Lucide React
+*   **工具库**：date-fns (日期处理), framer-motion (动画交互), sonner (Toast 通知)
+
+###  🌱 页面展示
+
+<div className="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-4 tw-my-8">
+  
+</div>
+<div className="tw-rounded-xl tw-overflow-hidden tw-border tw-border-gray-200 dark:tw-border-gray-800">
+    <ImagePreview src={useBaseUrl("/projects/finance-copilot-web/dashboard.png")} alt="Home Page" className="tw-w-full tw-h-auto tw-object-cover" />
+    <p className="tw-p-2 tw-text-center tw-text-sm tw-text-gray-500">财报列表</p>
+  </div>
+  <div className="tw-rounded-xl tw-overflow-hidden tw-border tw-border-gray-200 dark:tw-border-gray-800">
+    <ImagePreview src={useBaseUrl("/projects/finance-copilot-web/checkreport.png")} alt="Home Page" className="tw-w-full tw-h-auto tw-object-cover" />
+    <p className="tw-p-2 tw-text-center tw-text-sm tw-text-gray-500">财报校验</p>
+  </div>

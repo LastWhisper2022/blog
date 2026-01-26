@@ -1,0 +1,93 @@
+---
+title: 隻恶博客设计
+description: 基于 Docusaurus 构建的个人技术博客，集成暗黑模式、本地搜索与评论系统
+hide_table_of_contents: false
+---
+
+import { Icon } from "@iconify/react";
+
+# 隻恶博客设计
+
+<div className="tw-flex tw-gap-4 tw-mb-8">
+  <a 
+    href="https://github.com/MuscleProgrammerXiao/blog" 
+    target="_blank"
+    className="tw-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-bg-gray-900 tw-text-white tw-rounded-lg tw-font-medium hover:tw-bg-gray-700 hover:tw-text-white tw-transition-colors no-underline"
+  >
+    <Icon icon="ri:github-fill" className="tw-w-5 tw-h-5" />
+    GitHub 仓库
+  </a>
+  <a 
+    href="/" 
+    target="_blank"
+    className="tw-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-bg-ink-600 tw-text-white tw-rounded-lg tw-font-medium hover:tw-bg-ink-700 hover:tw-text-white tw-transition-colors no-underline"
+  >
+    <Icon icon="ri:global-line" className="tw-w-5 tw-h-5" />
+    在线预览
+  </a>
+</div>
+
+## 🎨 设计理念
+
+本博客采用了 **"内容优先"** 的极简设计风格，结合了 **Docusaurus** 强大的文档管理能力和 **TailwindCSS** 的灵活样式定制。
+
+### 核心特性
+
+1.  **响应式设计**：完美适配移动端、平板和桌面端，特别优化了移动端的导航交互。
+2.  **暗黑模式**：基于系统偏好自动切换，精心调配了深色模式下的对比度，保护视力。
+3.  **交互细节**：
+    *   首页 Project Ticker 无限滚动效果
+    *   作品列表页的 Bento Grid 布局
+    *   按钮和卡片的微交互动画
+
+## 🛠️ 技术实现
+
+### 1. 架构选择
+选择 Docusaurus 是因为它开箱即用，内置了：
+*   React 18 + TypeScript
+*   MDX 支持
+*   SEO 优化
+*   i18n 国际化支持
+
+### 2. 样式定制
+虽然 Docusaurus 默认使用 Infima 样式库，但我引入了 TailwindCSS 来处理更复杂的自定义布局。
+通过 `docusaurus-tailwindcss` 插件实现了两者的共存。
+
+```javascript
+// tailwind.config.js
+module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx,mdx}"],
+  theme: {
+    extend: {
+      colors: {
+        primary: "#3b82f6",
+      },
+    },
+  },
+  corePlugins: {
+    preflight: false, // 禁用默认重置，避免与 Infima 冲突
+  },
+};
+```
+
+### 3. 本地搜索
+集成了 `@easyops-cn/docusaurus-search-local`，实现了离线全文检索功能，支持中英文分词。
+
+## 📸 页面展示
+
+<div className="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-4 tw-my-8">
+  <div className="tw-rounded-xl tw-overflow-hidden tw-border tw-border-gray-200 dark:tw-border-gray-800">
+    <img src="/img/docusaurus-social-card.jpg" alt="Home Page" className="tw-w-full tw-h-auto tw-object-cover" />
+    <p className="tw-p-2 tw-text-center tw-text-sm tw-text-gray-500">首页设计</p>
+  </div>
+  <div className="tw-rounded-xl tw-overflow-hidden tw-border tw-border-gray-200 dark:tw-border-gray-800">
+    <img src="/img/docusaurus-social-card.jpg" alt="Blog Post" className="tw-w-full tw-h-auto tw-object-cover" />
+    <p className="tw-p-2 tw-text-center tw-text-sm tw-text-gray-500">文章阅读体验</p>
+  </div>
+</div>
+
+## 📅 后续规划
+
+- [ ] 集成 Giscus 评论系统
+- [ ] 增加 RSS 订阅功能
+- [ ] 优化首屏加载速度

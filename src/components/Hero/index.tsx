@@ -2,11 +2,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import ProjectTicker from "../ProjectTicker";
 
 const Hero = () => {
   return (
-    <div className="tw-min-h-screen tw-flex tw-items-center tw-justify-center">
-      <div className="tw-max-w-6xl tw-w-full tw-flex tw-flex-col md:tw-flex-row tw-items-center tw-justify-between tw-gap-10">
+    <div className="tw-relative tw-min-h-screen tw-flex tw-items-center tw-justify-center">
+      
+      <div className="tw-max-w-6xl tw-w-full tw-flex tw-flex-col md:tw-flex-row tw-items-center tw-justify-between tw-gap-10 tw-pb-32">
         {/* 文字区域 - 左侧（PC） / 上方（Mobile） */}
         <motion.div
           className="tw-flex-1 tw-text-center md:tw-text-left tw-relative tw-z-10"
@@ -61,6 +63,11 @@ const Hero = () => {
             }}
           />
         </motion.div>
+      </div>
+
+      {/* 底部作品轮播 - 绝对定位 */}
+      <div className="tw-absolute tw-bottom-0 tw-left-0 tw-w-full">
+         <ProjectTicker />
       </div>
     </div>
   );
