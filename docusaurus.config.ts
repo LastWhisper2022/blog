@@ -115,7 +115,7 @@ const config: Config = {
         blog: {
           routeBasePath: "blog",
           path: "blog",
-          postsPerPage: 10,
+          postsPerPage: 'ALL',
           blogSidebarTitle: "全部文章",
           authorsMapPath: "authors.yml",
           feedOptions: {

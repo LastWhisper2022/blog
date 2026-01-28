@@ -8,7 +8,6 @@ import {
   ThemeClassNames,
 } from '@docusaurus/theme-common';
 import BlogLayout from '@theme/BlogLayout';
-import BlogListPaginator from '@theme/BlogListPaginator';
 import SearchMetadata from '@theme/SearchMetadata';
 import type {Props} from '@theme/BlogListPage';
 import BlogPostItems from '@theme/BlogPostItems';
@@ -30,9 +29,20 @@ function BlogListPageMetadata(props: Props): ReactNode {
   );
 }
 
+import ClientPaginator from './ClientPaginator';
+import { Badge } from "@site/src/components/ui/badge";
+
 function BlogListPageContent(props: Props): ReactNode {
   const {metadata, items, sidebar} = props;
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 6; // Adjust as needed, usually 10 matches docusaurus config
+
+  // Reset page when category changes
+  const handleCategoryChange = (category: string | null) => {
+    setSelectedCategory(category);
+    setCurrentPage(1);
+  };
 
   const categories = useMemo(() => {
     const tagsMap = new Map<string, number>();
@@ -77,61 +87,51 @@ function BlogListPageContent(props: Props): ReactNode {
     });
   }, [items, selectedCategory]);
 
+  const paginatedItems = useMemo(() => {
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    return filteredItems.slice(start, start + ITEMS_PER_PAGE);
+  }, [filteredItems, currentPage]);
+
+  const totalPages = Math.ceil(filteredItems.length / ITEMS_PER_PAGE);
+
   return (
     <BlogLayout sidebar={sidebar}>
       {/* Category Filters */}
       <div className="tw-mb-8 tw-flex tw-flex-wrap tw-gap-2">
-            <button
-                className={clsx(
-                    'tw-px-4 tw-py-2 tw-rounded-full tw-text-sm tw-font-medium tw-transition-colors tw-border-none tw-cursor-pointer',
-                    !selectedCategory 
-                        ? 'tw-bg-ink-600 tw-text-white' 
-                        : 'tw-bg-gray-100 dark:tw-bg-gray-800 tw-text-gray-600 dark:tw-text-gray-300 hover:tw-bg-gray-200 dark:hover:tw-bg-gray-700'
-                )}
-                // Inline styles as fallback if Tailwind fails
-                style={{
-                    padding: '8px 16px',
-                    borderRadius: '9999px',
-                    border: 'none',
-                    cursor: 'pointer',
-                    backgroundColor: !selectedCategory ? 'var(--ifm-color-primary)' : 'var(--ifm-color-emphasis-200)',
-                    color: !selectedCategory ? '#fff' : 'var(--ifm-font-color-base)',
-                    marginRight: '8px',
-                    marginBottom: '8px'
-                }}
-                onClick={() => setSelectedCategory(null)}
+            <Badge
+                variant={!selectedCategory ? "default" : "secondary"}
+                className="tw-cursor-pointer tw-px-4 tw-py-1.5 tw-text-sm"
+                onClick={() => handleCategoryChange(null)}
             >
                 全部
-            </button>
+            </Badge>
             {categories.map(category => (
-                <button
+                <Badge
                     key={category}
-                    className={clsx(
-                        'tw-px-4 tw-py-2 tw-rounded-full tw-text-sm tw-font-medium tw-transition-colors tw-border-none tw-cursor-pointer',
-                        selectedCategory === category
-                            ? 'tw-bg-ink-600 tw-text-white'
-                            : 'tw-bg-gray-100 dark:tw-bg-gray-800 tw-text-gray-600 dark:tw-text-gray-300 hover:tw-bg-gray-200 dark:hover:tw-bg-gray-700'
-                    )}
-                     // Inline styles as fallback if Tailwind fails
-                    style={{
-                        padding: '8px 16px',
-                        borderRadius: '9999px',
-                        border: 'none',
-                        cursor: 'pointer',
-                        backgroundColor: selectedCategory === category ? 'var(--ifm-color-primary)' : 'var(--ifm-color-emphasis-200)',
-                        color: selectedCategory === category ? '#fff' : 'var(--ifm-font-color-base)',
-                        marginRight: '8px',
-                        marginBottom: '8px'
-                    }}
-                    onClick={() => setSelectedCategory(category)}
+                    variant={selectedCategory === category ? "default" : "secondary"}
+                    className="tw-cursor-pointer tw-px-4 tw-py-1.5 tw-text-sm"
+                    onClick={() => handleCategoryChange(category)}
                 >
                     {category}
-                </button>
+                </Badge>
             ))}
       </div>
 
-      <BlogPostItems items={filteredItems} />
-      {!selectedCategory && <BlogListPaginator metadata={metadata} />}
+      <BlogPostItems items={paginatedItems} />
+      
+      {/* Custom Paginator for filtered results OR default view if we want consistent UI */}
+      <ClientPaginator 
+        currentPage={currentPage} 
+        totalPages={totalPages} 
+        onPageChange={setCurrentPage} 
+      />
+      
+      {/* Hide default paginator since we handle it manually now, or only show it if no category selected AND we are not paginating locally? 
+          Actually, since we slice 'items' locally, we should probably hide the default paginator to avoid confusion, 
+          OR keep using default paginator for 'All' view if we didn't slice it.
+          But to have consistent UI, it's better to use our ClientPaginator for everything on this page.
+      */}
+      {/* {!selectedCategory && <BlogListPaginator metadata={metadata} />} */}
     </BlogLayout>
   );
 }

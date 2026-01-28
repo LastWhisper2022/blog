@@ -6,9 +6,8 @@ import ProjectTicker from "../ProjectTicker";
 
 const Hero = () => {
   return (
-    <div className="tw-relative tw-min-h-screen tw-flex tw-items-center tw-justify-center">
-      
-      <div className="tw-max-w-6xl tw-w-full tw-flex tw-flex-col md:tw-flex-row tw-items-center tw-justify-between tw-gap-10 tw-pb-32">
+    <div className="tw-relative tw-min-h-screen tw-flex tw-items-center tw-justify-center tw-overflow-hidden">
+      <div className="tw-max-w-6xl tw-w-full tw-flex tw-flex-col md:tw-flex-row tw-items-center tw-justify-between tw-gap-10 tw-pb-32 tw-px-4 tw-relative tw-z-10">
         {/* 文字区域 - 左侧（PC） / 上方（Mobile） */}
         <motion.div
           className="tw-flex-1 tw-text-center md:tw-text-left tw-relative tw-z-10"
@@ -17,7 +16,7 @@ const Hero = () => {
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           <motion.h1
-            className="tw-text-4xl md:tw-text-5xl lg:tw-text-6xl tw-font-bold tw-text-gray-800 "
+            className="tw-text-4xl md:tw-text-5xl lg:tw-text-6xl tw-font-bold tw-text-gray-800 dark:tw-text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -25,7 +24,7 @@ const Hero = () => {
             欢迎来到我的博客
           </motion.h1>
           <motion.p
-            className="tw-text-lg md:tw-text-xl tw-text-gray-600"
+            className="tw-text-lg md:tw-text-xl tw-text-gray-600 dark:tw-text-gray-300"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
@@ -36,7 +35,7 @@ const Hero = () => {
           <motion.div>
             <Link
               to="/blog" 
-              className="tw-inline-block tw-px-6 tw-py-3 tw-bg-gray-100 tw-text-gray-800 tw-font-medium tw-rounded-lg tw-border tw-border-gray-200 tw-transition-all tw-duration-300"
+              className="tw-inline-block tw-px-6 tw-py-3 tw-bg-gray-100 dark:tw-bg-gray-800 tw-text-gray-800 dark:tw-text-white tw-font-medium tw-rounded-lg tw-border tw-border-gray-200 dark:tw-border-gray-700 tw-transition-all tw-duration-300 hover:tw-bg-gray-200 dark:hover:tw-bg-gray-700 tw-no-underline hover:tw-no-underline"
             >
               开始阅读
             </Link>
