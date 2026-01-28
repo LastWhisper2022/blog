@@ -24,8 +24,16 @@ export default function BlogPostItem({children, className}: Props): ReactNode {
   const {metadata, isBlogPostPage} = useBlogPost();
   const {frontMatter, title, date, permalink, description, readingTime} = metadata;
   // @ts-ignore
-  const image = frontMatter.image || '/img/default.png';
-
+  const assetsImage = (metadata as any).assets?.image;
+  // @ts-ignore
+  let image = assetsImage || frontMatter.image || '/img/default.png';
+  
+  // 临时修复：如果 assetsImage 为空，且 frontMatter.image 是相对路径，手动补全
+  if (frontMatter.image && !assetsImage && !frontMatter.image.startsWith('/') && !frontMatter.image.startsWith('http')) {
+      const cleanImage = frontMatter.image.replace(/^\.\//, '');
+      image = permalink.replace(/\/?$/, '/') + cleanImage;
+  }
+  console.log(image,"image")
   const containerClassName = useContainerClassName();
 
   const dateTimeFormat = useDateTimeFormat({
@@ -129,7 +137,46 @@ export default function BlogPostItem({children, className}: Props): ReactNode {
 
   return (
     <BlogPostItemContainer className={clsx(containerClassName, className)}>
-      <BlogPostItemHeader />
+      {/* 详情页顶部背景图 */}
+      <div className="tw-relative tw-w-full tw-h-[300px] md:tw-h-[400px] tw-mb-8 tw-rounded-xl tw-overflow-hidden">
+        <div 
+          className="tw-absolute tw-inset-0 tw-bg-cover tw-bg-center"
+          style={{backgroundImage: `url(${image})`}}
+        />
+        <div className="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/80 tw-via-black/40 tw-to-transparent" />
+        
+        <div className="tw-absolute tw-bottom-0 tw-left-0 tw-w-full tw-p-6 md:tw-p-10 tw-text-white">
+          <div className="tw-mb-4 tw-flex tw-flex-wrap tw-gap-2">
+            {metadata.tags.map((tag) => (
+              <Badge 
+                key={tag.permalink} 
+                variant="secondary" 
+                className="tw-bg-white/20 tw-text-white tw-border-white/10 hover:tw-bg-white/30 tw-backdrop-blur-sm"
+              >
+                {tag.label}
+              </Badge>
+            ))}
+          </div>
+          
+          <h1 className="tw-text-3xl md:tw-text-4xl lg:tw-text-5xl tw-font-bold tw-mb-4 tw-leading-tight">
+            {title}
+          </h1>
+          
+          <div className="tw-flex tw-items-center tw-gap-4 tw-text-sm md:tw-text-base tw-text-white/80">
+            <div className="tw-flex tw-items-center tw-gap-1.5">
+              <Calendar className="tw-w-4 tw-h-4" />
+              <time dateTime={date}>{formatDate(date)}</time>
+            </div>
+            {readingTime && (
+              <div className="tw-flex tw-items-center tw-gap-1.5">
+                <Clock className="tw-w-4 tw-h-4" />
+                <span>阅读需 {Math.ceil(readingTime)} 分钟</span>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
       <BlogPostItemContent>{children}</BlogPostItemContent>
       <BlogPostItemFooter />
     </BlogPostItemContainer>

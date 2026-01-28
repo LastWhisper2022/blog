@@ -118,20 +118,11 @@ function BlogListPageContent(props: Props): ReactNode {
       </div>
 
       <BlogPostItems items={paginatedItems} />
-      
-      {/* Custom Paginator for filtered results OR default view if we want consistent UI */}
       <ClientPaginator 
         currentPage={currentPage} 
         totalPages={totalPages} 
         onPageChange={setCurrentPage} 
       />
-      
-      {/* Hide default paginator since we handle it manually now, or only show it if no category selected AND we are not paginating locally? 
-          Actually, since we slice 'items' locally, we should probably hide the default paginator to avoid confusion, 
-          OR keep using default paginator for 'All' view if we didn't slice it.
-          But to have consistent UI, it's better to use our ClientPaginator for everything on this page.
-      */}
-      {/* {!selectedCategory && <BlogListPaginator metadata={metadata} />} */}
     </BlogLayout>
   );
 }
