@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkmy_website=globalThis.webpackChunkmy_website||[]).push([[472],{5513(e){e.exports=JSON.parse('{"title":"\u5168\u90e8\u6587\u7ae0","items":[{"title":"Nextjs\u642d\u5efa\u4e2a\u4eba\u7f51\u7ad9","permalink":"/blog/build-personal-website","unlisted":false,"date":"2024-10-12T00:00:00.000Z"}]}')}}]);

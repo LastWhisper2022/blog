@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkmy_website=globalThis.webpackChunkmy_website||[]).push([[121],{8070(l){l.exports=JSON.parse('{"tags":[{"label":"\u6280\u672f","permalink":"/blog/tags/\u6280\u672f","count":1},{"label":"\u670d\u52a1\u5668","permalink":"/blog/tags/\u670d\u52a1\u5668","count":1},{"label":"\u90e8\u7f72","permalink":"/blog/tags/\u90e8\u7f72","count":1}]}')}}]);
