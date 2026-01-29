@@ -1,7 +1,7 @@
 ---
 title: Nextjs搭建个人网站
 slug: build-personal-website
-tags: [技术,服务器,部署]
+tags: [技术,nextjs,prisma，vercel]
 keywords: [next.js,个人博客]
 date: 2024-10-12
 image: /img/blog/build-personal-website/nextjs-blog.png
@@ -49,7 +49,7 @@ export default function Page() {
 @tailwind components;
 @tailwind utilities;
 ```
-### 2. 组件化，布局，响应式容器，首页，底部，头部实现
+### 2. 模块实现
 >  对next.js项目结构不熟悉可以查看文档 [Project Structure](https://nextjs.org/docs/getting-started/project-structure)。
 >  在编写tailwindcss时推荐插件：Tailwind CSS IntelliSense，Tailwind Snippets。
 ##### 2.1 组件化：
@@ -210,7 +210,7 @@ export default function Header() {
     )
 }
 ```
-### 3. Posts页面，通过动态路由进入post详情，Create Post页面
+### 3. Posts详情页
 ##### 3.1 创建posts页面（文档 [Pages](https://nextjs.org/docs/app/building-your-application/routing/pages)）
 点击标题进入详情页面时，通过标题对应的id进入到子路由页面 ``/posts/${post.id}``,每次点击标题的id都是不固定的，所以接下来需要用到动态路由。
 ```tsx
