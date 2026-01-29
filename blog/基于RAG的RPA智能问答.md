@@ -1,9 +1,11 @@
 ---
-title: 基于RAG的RPA智能问答开发
+title: 基于RAG的RPA智能问答
 slug: rag-rpa-qa
-tags: [技术,RPA,LLM]
-keywords: [develop, LLM, RPA]
+tags: [技术,RPA,RAG,LLM]
+keywords: [RPA，RAG]
 date: 2026-01-21
+image: /img/blog/RAG/RAG.png
+draft: true
 ---
 
 <!-- truncate -->
