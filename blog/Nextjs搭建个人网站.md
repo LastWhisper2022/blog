@@ -1,7 +1,7 @@
 ---
 title: Nextjs搭建个人网站
 slug: build-personal-website
-tags: [技术,nextjs,prisma，vercel]
+tags: [技术,nextjs,prisma,vercel]
 keywords: [next.js,个人博客]
 date: 2024-10-12
 image: /img/blog/build-personal-website/nextjs-blog.png
@@ -601,7 +601,7 @@ export default async function CreatePost() {
 ==(可忽略)== 将环境变量统一放入一个文件夹内，将 `.env.local` 中内容复制粘贴到 `.env` 中，只保留 `.env` , 注意请在.gitignore中配置不要将.env文件提交到远程仓库。
 ## 二. 部署过程 
 >将代码部署到 [vercel](https://vercel.com)：先把代码提交到github仓库，然后在vercel中导入项目进行部署。（在首次部署的过程中会出现以下问题。 [视频教程1:56:10](https://www.youtube.com/watch?v=y7JCnfbETPs)）
-##### prisma数据库问题
+### 1.prisma数据库问题
 在package.json中 `"scripts"` 中加入。
 ```
 "postinstall":"prisma generate"
@@ -616,7 +616,7 @@ export default async function CreatePost() {
 - 终端将数据库模型同步到数据库 npx prisma db push 
 - 再次将代码提交到github，此时vercel会自动部署刚才提交的代码。若没有自动部署也可以点进项目中选择Deployments 选择 Redeploy 重新部署，绿灯表示部署成功
 ```
-##### 环境变量问题
+### 2.环境变量问题
 在预览项目是，切换到post页面发现此时postlist数据为空，create post页面打不开，发现地址还是本地的，所以需要将URL地址替换成生产URL地址。
 ```
 - 选择 Project 复制 Domains 中 生产URL地址
@@ -634,4 +634,3 @@ export default async function CreatePost() {
 ```
 
 最后再部署一次，等到Status变绿后，此时你已经自己搭建并部署了你的博客🎉🎉🎉
-如果我的文档对你有帮助，别忘了[Star⭐️~ ](https://github.com/MuscleProgrammerXiao/blogs) 我会更加积极的更新🍻

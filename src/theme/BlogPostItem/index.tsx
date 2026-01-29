@@ -12,6 +12,7 @@ import { Badge } from "@site/src/components/ui/badge"
 import Link from '@docusaurus/Link';
 import { useDateTimeFormat } from '@docusaurus/theme-common/internal';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import Comment from '@site/src/components/Comment';
 
 // apply a bottom margin in list view
 function useContainerClassName() {
@@ -167,6 +168,7 @@ export default function BlogPostItem({children, className}: Props): ReactNode {
       </div>
 
       <BlogPostItemContent>{children}</BlogPostItemContent>
+      <Comment/>
       <BlogPostItemFooter />
     </BlogPostItemContainer>
   );

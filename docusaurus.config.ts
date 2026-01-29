@@ -8,7 +8,7 @@ const config: Config = {
   url: "https://lastwhisper.online", //网站域名
   baseUrl: "/",
   favicon: "svg/favicon.ico",
-  organizationName: "MuscleProgrammerXiao",
+  organizationName: "LastWhisper2022",
   projectName: "blog",
   onBrokenLinks: "warn", // throw,warn,ignore
   plugins: [
@@ -67,7 +67,7 @@ const config: Config = {
     //         },
     //         {
     //           label: "GitHub",
-    //           href: "https://github.com/MuscleProgrammerXiao",
+    //           href: "https://github.com/LastWhisper2022",
     //         },
     //         {
     //           label: "X",
@@ -96,7 +96,7 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
     giscus: {
-      repo: 'MuscleProgrammerXiao/blog',
+      repo: 'LastWhisper2022/blog',
       repoId: 'R_kgDOQptTUA',
       category: 'Announcements',
       categoryId: 'DIC_kwDOQptTUM4C02cn',
