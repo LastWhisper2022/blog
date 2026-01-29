@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkmy_website=globalThis.webpackChunkmy_website||[]).push([[121],{8070(e){e.exports=JSON.parse('{"tags":[{"label":"\u6280\u672f","permalink":"/blog/tags/\u6280\u672f","count":1},{"label":"nextjs","permalink":"/blog/tags/nextjs","count":1},{"label":"prisma\uff0cvercel","permalink":"/blog/tags/prisma\uff0cvercel","count":1}]}')}}]);
