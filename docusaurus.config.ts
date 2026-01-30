@@ -27,7 +27,7 @@ const config: Config = {
     image: "img/docusaurus-social-card.jpg",
     colorMode: {
       defaultMode: "light", // 默认主题：light | dark
-      disableSwitch: true, // 是否禁用切换按钮
+      disableSwitch: false, // 是否禁用切换按钮
       respectPrefersColorScheme: false, // 跟随系统深浅色
     },
     navbar: {
