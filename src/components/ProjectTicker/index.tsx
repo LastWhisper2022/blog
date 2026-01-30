@@ -2,11 +2,6 @@ import React from "react";
 import Link from "@docusaurus/Link";
 import { projects } from "@site/src/data/projects";
 
-// 无限滚动的动画样式
-const marqueeStyle = {
-  animation: "scroll 40s linear infinite",
-};
-
 const ProjectTicker = () => {
   // 为了实现无缝滚动，我们需要复制一份数据列表
   const allProjects = [...projects, ...projects, ...projects];
@@ -20,7 +15,7 @@ const ProjectTicker = () => {
         <div className="tw-absolute tw-top-0 tw-left-0 tw-w-20 tw-h-full tw-bg-gradient-to-r tw-from-gray-50 dark:tw-from-[#1b1b1d] tw-to-transparent tw-z-10"></div>
         <div className="tw-absolute tw-top-0 tw-right-0 tw-w-20 tw-h-full tw-bg-gradient-to-l tw-from-gray-50 dark:tw-from-[#1b1b1d] tw-to-transparent tw-z-10"></div>
 
-        <div className="tw-flex tw-gap-8 tw-whitespace-nowrap hover:tw-pause-animation" style={marqueeStyle}>
+        <div className="tw-flex tw-gap-8 tw-whitespace-nowrap hover:tw-pause-animation animate-scroll">
           {allProjects.map((project, index) => (
             <Link
               key={`${project.id}-${index}`}

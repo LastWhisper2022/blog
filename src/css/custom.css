@@ -153,6 +153,10 @@
   100% { transform: translateX(-33.33%); } /* 因为复制了3份，移动1/3即可无缝循环 */
 }
 
+.animate-scroll {
+  animation: scroll 40s linear infinite;
+}
+
 .hover\:tw-pause-animation:hover {
   animation-play-state: paused !important;
 }
