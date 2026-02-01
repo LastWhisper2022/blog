@@ -1,20 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap');
+@font-face {
+  font-family: 'Orbitron';
+  src: url('/Font/Orbitron-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Orbitron';
+  src: url('/Font/Orbitron-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Orbitron';
+  src: url('/Font/Orbitron-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Orbitron';
+  src: url('/Font/Orbitron-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* 移除 navbar 边框和阴影，设置透明背景 (Home Page Only) */
-.home-page .navbar {
-  border-bottom: none !important;
-  box-shadow: none !important;
-  background-color: transparent !important;
-}
-
-/* 隐藏 Navbar Logo (Home Page Only) */
-.home-page .navbar__logo {
-  display: none !important;
-}
 
 /* ===== 浅色主题：冷静蓝灰 ===== */
 :root {
@@ -167,6 +185,29 @@
   }
 }
 
+/* 适配 Dark Mode 搜索框 */
+html[data-theme='dark'] .navbar__search-input {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+html[data-theme='dark'] .navbar__search-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+html[data-theme='dark'] .DocSearch-Button {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+html[data-theme='dark'] .DocSearch-Button-Placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+html[data-theme='dark'] .DocSearch-Search-Icon {
+    color: rgba(255, 255, 255, 0.7);
+}
+
 /* ===== Project Ticker Animation & Styles ===== */
 @keyframes scroll {
   0% { transform: translateX(0); }
@@ -305,4 +346,60 @@
   --border: 217.2 32.6% 17.5%;
   --input: 217.2 32.6% 17.5%;
   --ring: 212.7 26.8% 83.9%;
+}
+
+/* 移除 navbar 边框和阴影，设置透明背景 (Home Page Only) - Moved to End for Specificity */
+html body.home-page {
+  --ifm-navbar-background-color: transparent !important;
+}
+
+html body.home-page .navbar,
+html body.home-page .navbar__inner,
+html body.home-page .navbar-sidebar__backdrop,
+html body.home-page nav.navbar,
+html body.home-page div[class^='navbar'] {
+  border-bottom: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+
+/* 隐藏 Navbar Logo (Home Page Only) */
+html body.home-page .navbar__logo {
+  display: none !important;
+}
+
+/* 强制 Navbar 链接文字为白色，且应用 Gundam 字体 (Home Page Only) */
+html body.home-page .navbar__item,
+html body.home-page .navbar__link {
+  color: #ffffff !important;
+  font-family: 'Orbitron', sans-serif !important;
+  letter-spacing: 1px;
+}
+
+/* 强制 Navbar 链接 hover 状态保持白色或微调 (Home Page Only) */
+html body.home-page .navbar__item:hover,
+html body.home-page .navbar__link:hover {
+  color: #e0e0e0 !important;
+}
+
+/* 强制汉堡菜单为白色 */
+html body.home-page .navbar__toggle {
+  color: #ffffff !important;
+}
+html body.home-page .navbar__toggle svg {
+  fill: #ffffff !important;
+}
+
+/* 强制 Navbar 链接文字为白色，且应用 Gundam 字体 (Home Page Only) */
+.home-page .navbar__item {
+  color: #ffffff !important;
+  font-family: 'Orbitron', sans-serif !important;
+  letter-spacing: 1px;
+}
+
+/* 强制 Navbar 链接 hover 状态保持白色或微调 (Home Page Only) */
+.home-page .navbar__item:hover {
+  color: #e0e0e0 !important;
 }
