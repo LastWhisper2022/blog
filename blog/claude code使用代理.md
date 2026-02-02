@@ -1,11 +1,9 @@
 ---
 title: claude code 使用代理
-description: 摘要
-slug: claude code
-tags: [blog]
-keywords: [develop, cloud]
-date: 2025-01-10
-draft: true
+slug: claude-code-router
+tags: [技术,claude-code,trea]
+keywords: [claude-code,代理,邪修,trea]
+date: 2025-12-21
 ---
 
 <!-- truncate -->
@@ -59,7 +57,7 @@ ccr -v
     {
       "name": "siliconflow",
       "api_base_url": "https://api.moonshot.cn/anthropic/",
-      "api_key": "sk-aBsBIh44RfTurnKZOspDs2XaiyzCnQ4U9of4BIDNoxDHyLyu",
+      "api_key": "sk-c0e7fed7b-你的自定义Key",
       "models": [
         "moonshotai/Kimi-K2-Instruct"
       ]
