@@ -261,7 +261,7 @@ const Hero = () => {
                         </div>
                     </div>
                 </motion.div>
-                <div className="tw-absolute tw-bottom-[20%] md:tw-bottom-[25%] tw-left-0 tw-w-full tw-text-center tw-z-30">
+                <div className="tw-absolute tw-bottom-[22%] md:tw-bottom-[20%] tw-left-0 tw-w-full tw-text-center tw-z-30">
                     <button
                         onClick={handleRandomRead}
                         disabled={isClicked}
