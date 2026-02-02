@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <style>
+    .ecg-line {
+      fill: none;
+      stroke: url(#lineGradient);
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 300; 
+      stroke-dashoffset: 300;
+      animation: draw-line 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 2px #fff);
+    }
+    
+    .ecg-dot {
+      fill: #fff;
+      r: 3;
+      filter: drop-shadow(0 0 6px #fff);
+      offset-path: path("M0 50 L15 50 L20 40 L25 50 L35 50 L40 60 L45 15 L50 85 L55 50 L70 50 L75 40 L85 50 L100 50");
+      animation: dot-move 3s ease-in-out infinite;
+      opacity: 0;
+    }
+
+    @keyframes draw-line {
+        0% {
+            stroke-dashoffset: 300;
+            opacity: 0;
+        }
+        5% {
+            opacity: 1;
+        }
+        60% {
+            stroke-dashoffset: 0;
+            opacity: 1;
+        }
+        70% {
+            stroke-dashoffset: 0;
+            opacity: 0;
+        }
+        100% {
+            stroke-dashoffset: 0;
+            opacity: 0;
+        }
+    }
+
+    @keyframes dot-move {
+        0% {
+            offset-distance: 0%;
+            opacity: 1;
+        }
+        60% {
+            offset-distance: 100%;
+            opacity: 1;
+        }
+        70% {
+            offset-distance: 100%;
+            opacity: 0;
+        }
+        100% {
+            offset-distance: 100%;
+            opacity: 0;
+        }
+    }
+
+    /* Cyberpunk Color Cycle Animations - High Contrast */
+    @keyframes color-cycle-start {
+        0% { stop-color: #00fff2; } /* Neon Cyan */
+        33% { stop-color: #ff003c; } /* Neon Red */
+        66% { stop-color: #d600ff; } /* Neon Purple */
+        100% { stop-color: #00fff2; }
+    }
+
+    @keyframes color-cycle-end {
+        0% { stop-color: #0066ff; } /* Electric Blue */
+        33% { stop-color: #ff00aa; } /* Neon Pink */
+        66% { stop-color: #9d00ff; } /* Deep Neon Purple */
+        100% { stop-color: #0066ff; }
+    }
+
+    .grad-stop-1 {
+        animation: color-cycle-start 9s linear infinite;
+    }
+
+    .grad-stop-2 {
+        animation: color-cycle-end 9s linear infinite;
+    }
+  </style>
+  <defs>
+    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop class="grad-stop-1" offset="0%" stop-color="#00fff2" />
+      <stop class="grad-stop-2" offset="100%" stop-color="#0066ff" />
+    </linearGradient>
+  </defs>
+  
+  <path class="ecg-line" d="M0 50 L15 50 L20 40 L25 50 L35 50 L40 60 L45 15 L50 85 L55 50 L70 50 L75 40 L85 50 L100 50" />
+  <circle class="ecg-dot" cx="0" cy="0" />
+</svg>
