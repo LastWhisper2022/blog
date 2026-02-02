@@ -5,8 +5,8 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "gen-blog": "node scripts/generate-blog-list.js",
-    "start": "npm run gen-blog && docusaurus start",
-    "build": "npm run gen-blog && docusaurus build",
+    "start": "node scripts/generate-blog-list.js && docusaurus start",
+    "build": "node scripts/generate-blog-list.js && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
