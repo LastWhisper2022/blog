@@ -34,7 +34,7 @@ const config: Config = {
       title: Title,
       logo: {
         alt: "My Site Logo",
-        src: "svg/logo.gif",
+        src: "svg/logo.svg",
       },
       items: [
         { to: "/blog", label: "博客", position: "right" },
