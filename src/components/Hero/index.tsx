@@ -150,17 +150,19 @@ const Hero = () => {
   }), []);
 
   return (
-    <div className="tw-relative tw-h-[calc(100vh-60px)] tw-bg-gray-50 dark:tw-bg-black tw-text-gray-900 dark:tw-text-white tw-overflow-hidden tw-flex tw-flex-col tw--mt-[60px] tw-pt-[60px]">
+    <div className="tw-relative tw-h-[calc(100svh-60px)] md:tw-h-[calc(100vh-60px)] tw-bg-gray-50 dark:tw-bg-black tw-text-gray-900 dark:tw-text-white tw-overflow-hidden tw-flex tw-flex-col tw--mt-[60px] tw-pt-[60px]">
         {/* 背景层 */}
         <div className="tw-absolute tw-inset-0 tw-z-0 tw-overflow-hidden">
-            {/* 移动端背景 (视频) - 默认暂停 */}
+            {/* 移动端背景 (视频) */}
             <div className="tw-block md:tw-hidden tw-relative tw-w-full tw-h-full">
                 <video
                     ref={videoRef}
+                    autoPlay
                     loop
                     muted
                     playsInline
                     className="tw-w-full tw-h-full tw-object-cover"
+                    poster={useBaseUrl("/img/pc-bg.png")}
                 >
                     <source src={mobileBgUrl} type="video/mp4" />
                 </video>
@@ -205,21 +207,19 @@ const Hero = () => {
         </div>
 
         {/* 主要内容区域 (居中) */}
-        <div className={`tw-relative tw-z-20 tw-container tw-mx-auto tw-px-4 tw-pt-20 tw-pb-12 tw-flex-1 tw-flex tw-flex-col tw-items-center tw-justify-center text-center tw-transition-opacity tw-duration-1000 ${isClicked ? 'tw-opacity-0 md:tw-opacity-100' : 'tw-opacity-100'}`}>
+        <div className={`tw-relative tw-z-20 tw-container tw-mx-auto tw-px-4 tw-pt-12 md:tw-pt-20 tw-pb-4 md:tw-pb-12 tw-flex-1 tw-flex tw-flex-col tw-items-center tw-justify-center text-center tw-transition-opacity tw-duration-1000 ${isClicked ? 'tw-opacity-0 md:tw-opacity-100' : 'tw-opacity-100'}`}>
              <motion.div
                  initial={{ opacity: 0, y: 20 }}
                  animate={{ opacity: 1, y: 0 }}
                  transition={{ duration: 0.6 }}
-                 className="tw-text-center tw-space-y-8 tw-w-full tw-flex tw-flex-col tw-items-center"
+                 className="tw-text-center tw-space-y-4 md:tw-space-y-8 tw-w-full tw-flex tw-flex-col tw-items-center"
             >
                 {/* 打字机效果区域 */}
-                <div className="tw-h-[300px] md:[@media(max-height:800px)]:tw-h-[200px] tw-w-full tw-max-w-4xl tw-flex tw-items-center tw-justify-center tw-relative tw-overflow-hidden">
+                <div className="tw-h-[220px] md:tw-h-[300px] md:[@media(max-height:800px)]:tw-h-[200px] tw-w-full tw-max-w-4xl tw-flex tw-items-center tw-justify-center tw-relative tw-overflow-hidden">
                     <div ref={textRef} className={`tw-text-lg md:tw-text-2xl tw-font-bold ${currentTheme.mainColor} tw-tracking-widest tw-transition-opacity tw-duration-1000 tw-leading-loose tw-text-center tw-w-full tw-whitespace-pre-wrap tw-break-words`} style={{ fontFamily: "'Orbitron', sans-serif", textShadow: `0 0 10px rgba(${currentTheme.glowRgba}, 0.8), 0 0 20px rgba(${currentTheme.glowRgba}, 0.4)` }}>
                         <Typewriter
-                            key={loopCount}
                             onInit={(typewriter) => {
                                 const timeString = getFormattedTime();
-
                                 typewriter
                                     .changeDelay(40)
                                     .typeString('> INITIALIZING_TEMPORAL_SCAN...<br/>')
