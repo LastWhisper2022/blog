@@ -14,7 +14,7 @@
   },
   {
     "id": "搭建一个个人博客网站.md",
-    "title": "搭建个人网站",
+    "title": "搭建个人网站中的总结",
     "date": "2026-01-21",
     "permalink": "/blog/server-deploy-project",
     "tags": [
@@ -31,7 +31,8 @@
     "permalink": "/blog/claude-code-router",
     "tags": [
       "技术",
-      "claude-code"
+      "claude-code",
+      "trea"
     ],
     "description": ""
   },

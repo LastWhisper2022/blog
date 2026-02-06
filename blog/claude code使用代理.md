@@ -4,6 +4,7 @@ slug: claude-code-router
 tags: [技术,claude-code,trea]
 keywords: [claude-code,代理,邪修,trea]
 date: 2025-12-21
+draft: true
 ---
 
 <!-- truncate -->

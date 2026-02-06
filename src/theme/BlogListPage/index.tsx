@@ -36,7 +36,7 @@ function BlogListPageContent(props: Props): ReactNode {
   const {metadata, items, sidebar} = props;
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const ITEMS_PER_PAGE = 6; // Adjust as needed, usually 10 matches docusaurus config
+  const ITEMS_PER_PAGE =6; // Increased to ensure all posts are shown
 
   // Reset page when category changes
   const handleCategoryChange = (category: string | null) => {
