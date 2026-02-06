@@ -208,6 +208,7 @@ sudo certbot certonly --manual --preferred-challenges dns -d lastwhisper.online 
 </ul>]]></content>
         <category label="技术" term="技术"/>
         <category label="LLM" term="LLM"/>
+        <category label="基础" term="基础"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Nextjs搭建个人网站]]></title>
