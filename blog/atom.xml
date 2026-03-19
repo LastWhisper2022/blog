@@ -2,12 +2,101 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lastwhisper.online/blog</id>
     <title>我的技术博客</title>
-    <updated>2026-01-21T00:00:00.000Z</updated>
+    <updated>2026-03-16T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lastwhisper.online/blog"/>
     <subtitle>分享前端开发经验与最佳实践</subtitle>
     <icon>https://lastwhisper.online/svg/favicon.ico</icon>
     <rights>Copyright © 2026 Your Name</rights>
+    <entry>
+        <title type="html"><![CDATA[离职前的梳理：关于我的个性，感到快乐的事]]></title>
+        <id>https://lastwhisper.online/blog/life-love-thoughts</id>
+        <link href="https://lastwhisper.online/blog/life-love-thoughts"/>
+        <updated>2026-03-16T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[这个月底会辞去在银行的工作，交接的事也差不多处理完了，闲着没事思考和记录一下。]]></summary>
+        <content type="html"><![CDATA[<p>这个月底会辞去在银行的工作，交接的事也差不多处理完了，闲着没事思考和记录一下。</p>
+<p>我不后悔当初选择在银行的web前端工作，公司提供的平台资源和周围的同事都是我梦想的工作；但也正是因为这份工作，让我更清晰了自己要走的路。我不知道自己真正热爱什么，但我一定知道自己讨厌什么。所以也不后悔离开。当然，这些和我今天想记录的无关～</p>
+<p>最近工作之余一直都在打王者，废寝忘食，没日没夜的打。昨天终于打到了100星，数了数上周打了136场。</p>
+<p>晚上睡觉的时候我在想：“以前玩lol手游也是有一段时间突然没日没夜的打，打到100多星。为什么我总是这样？”</p>
+<p>”关于离职这件事我想通了一半：我确定自己不想待在这里浪费时间了，所以做出决定。但离职后下一步打算我想了好久也没想好，那索性不想了，顺其自然也很好。那现在，没日没夜排位这件事又给我带来什么启发呢？“已经凌晨快2点了，我在床上翻来覆去睡不着，忽然间我找到了答案：”我也有一些热爱和擅长的事，最重要的是这些事情都有一个共同的特点。“</p>
+<div class="sm:tw-flex tw-gap-2"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img4_0.png" alt="Home Page" class="tw-cursor-zoom-in tw-w-full sm:tw-w-1/2 tw-h-auto tw-object-cover"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img4_1.png" alt="Home Page" class="tw-cursor-zoom-in tw-w-full sm:tw-w-1/2 tw-h-auto tw-object-cover"></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="关于健身">关于健身<a href="https://lastwhisper.online/blog/life-love-thoughts#%E5%85%B3%E4%BA%8E%E5%81%A5%E8%BA%AB" class="hash-link" aria-label="关于健身的直接链接" title="关于健身的直接链接" translate="no">​</a></h3>
+<p>真正意义上开始健身是22年来深圳后。原本是一次三个月的出差，因为下班时间多想找点事做。</p>
+<p>从想谈女朋友到凭什么谈到最后决定去健身。我个子小，长相平平，个性又好强，骨子里又自卑。当我意识到并接受了这些缺陷，我就开始当作挑战去改变了。后来我发现我这副身体其实很耐造。</p>
+<p>那段时间每天控制饮食，做力量，有氧训练。3个月后减脂成功了，5个月后我决定留在深圳，在健身这件事情上认识了很多现在的朋友，而这件事也让我找到了自己的另一个特点：我很容易感染身边的人。</p>
+<p>我很享受和喜欢这种感觉。</p>
+<p>到现在健身已经养成了习惯，一周总有两三天会好好练，现在卧推能推110kg。</p>
+<div class="max-sm:tw-flex tw-gap-2 tw-hidden tw-mb-2"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img6_0.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/2 tw-h-auto tw-object-cover"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img6_1.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/2 tw-h-auto tw-object-cover"></div>
+<div class="max-sm:tw-flex tw-gap-2 tw-hidden"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img6_2.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/2 tw-h-auto tw-object-cover"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img6_3.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/2 tw-h-auto tw-object-cover"></div>
+<div class="max-sm:tw-hidden tw-gap-4 tw-flex"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img6_0.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/4 tw-h-auto tw-object-cover"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img6_1.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/4 tw-h-auto tw-object-cover"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img6_2.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/4 tw-h-auto tw-object-cover"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img6_3.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/4 tw-h-auto tw-object-cover"></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="关于户外运动">关于户外运动<a href="https://lastwhisper.online/blog/life-love-thoughts#%E5%85%B3%E4%BA%8E%E6%88%B7%E5%A4%96%E8%BF%90%E5%8A%A8" class="hash-link" aria-label="关于户外运动的直接链接" title="关于户外运动的直接链接" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="跑步">跑步：<a href="https://lastwhisper.online/blog/life-love-thoughts#%E8%B7%91%E6%AD%A5" class="hash-link" aria-label="跑步：的直接链接" title="跑步：的直接链接" translate="no">​</a></h4>
+<p>一开始跑步是力量训练后做有氧，后来和同事一起户外跑，喜欢公园跑步放空的感觉。因为跑步和同事领导们都成了朋友，从他们身上学到了很多。从跑不动到慢慢适应再到提高配速，很有成就感。到现在跑步也成习惯了。</p>
+<div class="max-sm:tw-flex tw-gap-2 tw-hidden"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img2_0.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/2 tw-h-auto tw-object-cover"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img2_1.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/2 tw-h-auto tw-object-cover"></div>
+<div class="max-sm:tw-hidden tw-gap-4 tw-flex"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img2_0.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/4 tw-h-auto tw-object-cover"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img2_1.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/4 tw-h-auto tw-object-cover"></div>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="爬山">爬山：<a href="https://lastwhisper.online/blog/life-love-thoughts#%E7%88%AC%E5%B1%B1" class="hash-link" aria-label="爬山：的直接链接" title="爬山：的直接链接" translate="no">​</a></h4>
+<p>第一次是在深圳，减肥成功后，连续几周去爬了好几座山。发现体能上来后做很多事都容易多了，真正难忘的一次是在雨崩神湖线，一个人早上5点多出发，下午下山。</p>
+<div class="max-sm:tw-flex tw-gap-2 tw-hidden tw-mb-4"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img3_0.jpeg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/2 tw-h-auto tw-object-cover"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img3_1.jpeg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/2 tw-h-auto tw-object-cover"></div>
+<div class="max-sm:tw-hidden tw-gap-4 tw-flex tw-mb-4"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img3_0.jpeg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/4 tw-h-auto tw-object-cover"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img3_1.jpeg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/4 tw-h-auto tw-object-cover"></div>
+<p>最近一次是国庆和朋友去爬山。</p>
+<div class="max-sm:tw-flex tw-gap-2 tw-hidden tw-mb-2"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img3_2.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/2 tw-h-auto tw-object-cover"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img3_3.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/2 tw-h-auto tw-object-cover"></div>
+<div class="max-sm:tw-hidden tw-gap-4 tw-flex"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img3_2.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/4 tw-h-auto tw-object-cover"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img3_3.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/4 tw-h-auto tw-object-cover"></div>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="游泳">游泳：<a href="https://lastwhisper.online/blog/life-love-thoughts#%E6%B8%B8%E6%B3%B3" class="hash-link" aria-label="游泳：的直接链接" title="游泳：的直接链接" translate="no">​</a></h4>
+<p>游泳是和24年和朋友看视频一起自学的，一开始也是缩在泳池角落，慢慢学动作，从完整25米，到连续50，100，150。中途也是经历各种呛水，为了提高，报名了香港的维港游。也成功游完了，学游泳这件事克服了特别多的恐惧。在这个过程中我又发现了我特别特别喜欢水上的运动：冲浪，浮潜，野游。</p>
+<div class="max-sm:tw-flex tw-gap-2 tw-hidden"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img1_2.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/2 tw-h-auto tw-object-cover"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img1_3.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/2 tw-h-auto tw-object-cover"></div>
+<div class="max-sm:tw-hidden tw-gap-4 tw-flex"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img1_2.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/4 tw-h-auto tw-object-cover"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img1_3.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/4 tw-h-auto tw-object-cover"></div>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="腕力">腕力：<a href="https://lastwhisper.online/blog/life-love-thoughts#%E8%85%95%E5%8A%9B" class="hash-link" aria-label="腕力：的直接链接" title="腕力：的直接链接" translate="no">​</a></h4>
+<p>健身后认识的朋友喜欢怂恿掰手腕，后来周六和朋友去和一帮爱好者练习，前期每次掰弯后手都抬不起来，朋友说这种痛比牙痛更痛，哈哈；形容得很贴切。几个月后没那么疼了，力量明显涨了，不过这个爱好最近几个月都没有好好练了。</p>
+<div class="max-sm:tw-flex tw-gap-2 tw-hidden tw-mb-2"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img7_0.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/2 tw-h-auto tw-object-cover"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img7_1.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/2 tw-h-auto tw-object-cover"></div>
+<div class="max-sm:tw-flex tw-gap-2 tw-hidden"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img7_2.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/2 tw-h-auto tw-object-cover"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img7_3.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/2 tw-h-auto tw-object-cover"></div>
+<div class="max-sm:tw-hidden tw-gap-4 tw-flex"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img7_0.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/4 tw-h-auto tw-object-cover"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img7_1.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/4 tw-h-auto tw-object-cover"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img7_2.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/4 tw-h-auto tw-object-cover"><img src="https://lastwhisper.online/img/blog/life-love-thoughts/img7_3.jpg" alt="Home Page" class="tw-cursor-zoom-in tw-w-1/4 tw-h-auto tw-object-cover"></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="最后">最后<a href="https://lastwhisper.online/blog/life-love-thoughts#%E6%9C%80%E5%90%8E" class="hash-link" aria-label="最后的直接链接" title="最后的直接链接" translate="no">​</a></h3>
+<p>我发现这些事情有个共同的特点。我可能更喜欢有一点“挑战”的事。</p>]]></content>
+        <category label="生活" term="生活"/>
+        <category label="热爱" term="热爱"/>
+        <category label="游戏" term="游戏"/>
+        <category label="健身" term="健身"/>
+        <category label="挑战" term="挑战"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[关于我的2025]]></title>
+        <id>https://lastwhisper.online/blog/about-2025</id>
+        <link href="https://lastwhisper.online/blog/about-2025"/>
+        <updated>2026-03-03T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[前言]]></summary>
+        <content type="html"><![CDATA[<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="前言">前言<a href="https://lastwhisper.online/blog/about-2025#%E5%89%8D%E8%A8%80" class="hash-link" aria-label="前言的直接链接" title="前言的直接链接" translate="no">​</a></h3>
+<p>转眼现在已经是26年3月份，我又回到深圳，离职提上了流程。</p>
+<p>回顾2025年：焦虑，对抗，抑郁是主旋律。</p>
+<p>对未来的不确定性让我陷入焦虑，对美好的向往让我不断和焦虑对抗，情绪起起伏伏，所以抑郁贯穿了这一年。
+最终我会调整好情绪，并开启新的旅程。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="回顾2025">回顾2025<a href="https://lastwhisper.online/blog/about-2025#%E5%9B%9E%E9%A1%BE2025" class="hash-link" aria-label="回顾2025的直接链接" title="回顾2025的直接链接" translate="no">​</a></h3>
+<p>翻相册，查日志，看聊天记录...</p>
+<p>我其实也忘了过去一年发生了啥，只好一边查找一边梳理了。</p>
+<p>记得25年元旦前和 SY 吃饭，聊到25年的打算，她要离开深圳去成都，后面的聊天大概就是我挽留她要走，她的真实想法我不了解，她对我的了解
+远远大于我对她的了解。元旦节和朋友去了广州滑雪，买到了月底过年回家的票，不久前听朋友说，过年原本计划约我去哪玩，我又执意要回家，这件事
+我也忘了。一月底还认识了一个叔叔的侄子，和他吃了饭。做的行业差不多，所以有些话题，那时候天天在用DeepSeek，给他推荐了，没想到DeepSeek
+春节的时候火了。这个月小红书来了一批外国人...反正新鲜事还挺多。</p>
+<p>月底就是回家过年，和发小们喝酒吹牛逼，整个人也很浮躁。想创业，想做产品，想空手套白狼...年后回深体重涨了很多，换租了新房，约朋友到我家吃
+饭...换了新环境，想鞭策自己一把，强行给自己一些无意义的信心来逃避现实存在的问题。这个月吃的东西属实是多，身体心理都在膨胀。</p>
+<p>三月的前半段也是在吃，周二周四多了下班后和领导们跑步的活动，关于跑步这件事还有下文。中旬和 SY 去景德镇玩了几天，我不记得之前是因为什么矛盾
+她把我删了还是我把她删了，又是为什么我又加上她了，又一起去景德镇。（平时和朋友吹牛时，我总感觉我在恋爱关系中占主动权，但现在细细记录这些事情
+时我发现很多时候我实在是搞不懂女人🌝，你说这玩意儿到底他妈的是谁研究的呢？再牛逼的哥们儿陷入感情到最后都是一塌糊涂）想着她说去成都应该是赌气
+话吧，没想到还是去了。月底去看朋友几个参加力量举，那天喝了好多酒，从中午喝到了凌晨，我是一直迷糊的状态。周末去体验了一把摩托车，紧张拧到油门
+撞到了轮胎上，把自己撞得够呛，老板看我没啥大事，准备敲我一笔，没成想我答应得好好的，然后跑路了。我也不想理论，我也懒得赔偿，本来也是被那里教练
+怂恿才造成的。现在反思这件事：我应该先去医院而不是硬扛。在确认身体没事后，在当天把问题解决。</p>
+<p>清明节和朋友去汕尾冲浪。平常的日子就是健身，跑步，游泳。工作上的事很熟悉了。那段时间也有了离职的打算，我想要做一些有挑战性的事，我实在是讨厌
+一成不变的生活。于是空余时间跑去面试，面了一个公司，工作没下文，到是和合伙人聊到一块去了，这件事也挺新鲜。五月去成都和 SY 玩了几天。滑雪，博
+物馆，看熊猫...我发现我变得被动了。回深圳后有天和领导跑步，问我如果年底公司裁员，打算走还是留，我随口就回答要走。越熟悉公司，和越多优秀的同事
+一起工作后，我越是发现自己在编码这条路上走不远。我很羡慕他们工作时进入心流专注的样子，而这种状态我只有在做短时间内大的换版开发，做产品工作时
+与一线人员沟通制定方案解决问题时才能获得。我强烈的想走上这条长期的路，可我现在没有积蓄，我不得不先干完这一年。</p>
+<p>六月经有了强烈的身材焦虑，又开始了减脂，又慢慢开始了看书的习惯。这个月小组同事考上清华了，遂离职去读研，大家吃了顿饭，我也拍了些照，我想给这份工作留些纪念，七月发小结婚，六月底来深圳找我玩了一个通宵，那天确实是个不眠夜。七月初继续健身，关于开始这次减脂，我想了一个办法：我认为以我当时的状态，情绪起伏不定，很难完成这次减脂。所以和几个朋友聊天，把气氛搞得特别活跃，顺势拉了个群 “一天不练罚款50” 大家都很亢奋，觉得好玩，魔鬼训练也就这样开始了。到了中旬回家参加朋友婚礼，第一次当伴郎，也认识了几个朋友。结束后周末 SY 来玩了两天。回深圳后去惠州玩浮潜，桨板。八月继续健身，去惠州冲浪。平时健身和一起训练的公司同事成了朋友。这时候已经减脂成功了，力量也涨了。</p>
+<p>九月研究产品经理，改简历，也试着去面了几家公司，结果都被拒了。报名了十一月份香港维港游，去香港参加水试，顺利通过了。国庆外公80岁生日，回重庆，
+错过了印尼之行。深圳的朋友来重庆玩，陪他玩了几天，回去的几天都在喝酒，中途家里安排了相亲，最后也没见面。约了 SY 她没时间。假期最后一天和朋友
+爬了山。回深圳后和几个朋友在公园喝了顿大酒。空闲的时间继续保持着健身，跑步，阅读。跑步水平也明显提上来了。十一月去香港维港游，一切都很顺利，后来又过了一周，香港起了大火。十二月天慢慢凉了，户外活动少了，和朋友对酒吧产生了兴趣，去酒吧的次数变多了：和陌生人拼桌，蹦迪，喝酒，通宵...后来有一天突然又觉得没意思了，跨年和朋友几个去了海边，挺无聊的。我慢慢开始对所有人祛魅，撇开那层主观印象后，我开始变得失望。一月认识了两个朋友，一个公司
+同事，一个朋友学员。一二月份除了日常的健身，跑步，剩下的是一些团建，喝酒。关于过年的旅行，我想多积蓄一部分钱来应对辞职后，也拒绝了。</p>]]></content>
+        <category label="生活" term="生活"/>
+        <category label="记录" term="记录"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[搭建个人网站中的总结]]></title>
         <id>https://lastwhisper.online/blog/server-deploy-project</id>
