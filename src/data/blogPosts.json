@@ -1,5 +1,30 @@
 [
   {
+    "id": "关于生活以及未来.md",
+    "title": "离职前的梳理：关于我的个性，感到快乐的事",
+    "date": "2026-03-16",
+    "permalink": "/blog/life-love-thoughts",
+    "tags": [
+      "生活",
+      "热爱",
+      "游戏",
+      "健身",
+      "挑战"
+    ],
+    "description": ""
+  },
+  {
+    "id": "关于我的2025.md",
+    "title": "关于我的2025",
+    "date": "2026-03-03",
+    "permalink": "/blog/about-2025",
+    "tags": [
+      "生活",
+      "记录"
+    ],
+    "description": ""
+  },
+  {
     "id": "基于RAG的RPA智能问答.md",
     "title": "基于RAG的RPA智能问答",
     "date": "2026-01-21",
@@ -55,7 +80,8 @@
     "permalink": "/blog/llm-base-learning",
     "tags": [
       "技术",
-      "LLM"
+      "LLM",
+      "基础"
     ],
     "description": ""
   },
