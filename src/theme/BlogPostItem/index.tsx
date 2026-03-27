@@ -90,12 +90,12 @@ export default function BlogPostItem({children, className}: Props): ReactNode {
                               {tag.label}
                           </Badge>
                       ))}
-                  </div>
+                  </div> 
 
                   {/* Title */}
                   <h3 className={clsx(
                       "tw-text-lg md:tw-text-2xl tw-font-bold tw-leading-tight tw-mb-1 md:tw-mb-2 tw-text-white",
-                      "md:group-hover:tw-text-primary-foreground md:tw-transform md:tw-translate-y-2 md:group-hover:tw-translate-y-0 md:tw-transition-all md:tw-duration-500"
+                      "md:group-hover:tw-text-gray-300 md:tw-transform md:tw-translate-y-2 md:group-hover:tw-translate-y-0 md:tw-transition-all md:tw-duration-500"
                   )}>
                       {title}
                   </h3>
