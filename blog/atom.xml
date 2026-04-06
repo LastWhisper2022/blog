@@ -2,12 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lastwhisper.online/blog</id>
     <title>我的技术博客</title>
-    <updated>2026-03-16T00:00:00.000Z</updated>
+    <updated>2026-04-06T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lastwhisper.online/blog"/>
     <subtitle>分享前端开发经验与最佳实践</subtitle>
     <icon>https://lastwhisper.online/svg/favicon.ico</icon>
     <rights>Copyright © 2026 Your Name</rights>
+    <entry>
+        <title type="html"><![CDATA[离职后，新的开始]]></title>
+        <id>https://lastwhisper.online/blog/new-beginning</id>
+        <link href="https://lastwhisper.online/blog/new-beginning"/>
+        <updated>2026-04-06T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[1. 近况]]></summary>
+        <content type="html"><![CDATA[<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-近况">1. 近况<a href="https://lastwhisper.online/blog/new-beginning#1-%E8%BF%91%E5%86%B5" class="hash-link" aria-label="1. 近况的直接链接" title="1. 近况的直接链接" translate="no">​</a></h3>]]></content>
+        <category label="生活" term="生活"/>
+        <category label="工作" term="工作"/>
+        <category label="离职" term="离职"/>
+        <category label="新的开始" term="新的开始"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[日常爱好]]></title>
         <id>https://lastwhisper.online/blog/life-love-thoughts</id>
