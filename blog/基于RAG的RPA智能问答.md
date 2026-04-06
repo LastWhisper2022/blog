@@ -5,7 +5,7 @@ tags: [技术,RPA,RAG,LLM]
 keywords: [RPA，RAG]
 date: 2026-01-21
 image: /img/blog/RAG/RAG.png
-draft: true
+draft: false
 ---
 
 <!-- truncate -->
