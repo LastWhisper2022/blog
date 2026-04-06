@@ -117,6 +117,7 @@ const config: Config = {
           path: "blog",
           postsPerPage: 'ALL',
           blogSidebarTitle: "全部文章",
+          blogSidebarCount: "ALL",
           authorsMapPath: "authors.yml",
           feedOptions: {
             type: "all",
