@@ -1,8 +1,8 @@
 ---
 title: Nextjs搭建个人网站
 slug: build-personal-website
-tags: [技术,nextjs,prisma,vercel]
-keywords: [next.js,个人博客]
+tags: [技术,个人博客]
+keywords: [技术,个人博客]
 date: 2024-10-12
 image: /img/blog/build-personal-website/nextjs-blog.png
 ---
