@@ -30,6 +30,9 @@ const config: Config = {
       disableSwitch: false, // 是否禁用切换按钮
       respectPrefersColorScheme: false, // 跟随系统深浅色
     },
+    tableOfContents:{
+      maxHeadingLevel:5,
+    },
     navbar: {
       title: Title,
       logo: {
