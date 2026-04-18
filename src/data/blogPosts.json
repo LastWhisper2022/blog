@@ -1,11 +1,24 @@
 [
   {
+    "id": "重学前端01.md",
+    "title": "重学前端01：在AI的视角下重新认识前端",
+    "date": "2026-04-18",
+    "permalink": "/blog/relearn01",
+    "tags": [
+      "技术",
+      "前端"
+    ],
+    "description": ""
+  },
+  {
     "id": "量化学习.md",
     "title": "量化基础知识学习",
     "date": "2026-04-13",
     "permalink": "/blog/quant-learning",
     "tags": [
-      "量化，学习，兴趣"
+      "量化",
+      "学习",
+      "兴趣"
     ],
     "description": ""
   },
@@ -16,9 +29,8 @@
     "permalink": "/blog/new-beginning",
     "tags": [
       "生活",
-      "工作",
-      "离职",
-      "新的开始"
+      "记录",
+      "离职"
     ],
     "description": ""
   },
@@ -29,10 +41,7 @@
     "permalink": "/blog/life-love-thoughts",
     "tags": [
       "生活",
-      "热爱",
-      "游戏",
-      "健身",
-      "挑战"
+      "记录"
     ],
     "description": ""
   },
@@ -79,8 +88,7 @@
     "permalink": "/blog/claude-code-router",
     "tags": [
       "技术",
-      "claude-code",
-      "trea"
+      "claude-code"
     ],
     "description": ""
   },
@@ -115,9 +123,7 @@
     "permalink": "/blog/build-personal-website",
     "tags": [
       "技术",
-      "nextjs",
-      "prisma",
-      "vercel"
+      "个人博客"
     ],
     "description": ""
   }
