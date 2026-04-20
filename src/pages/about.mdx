@@ -31,9 +31,34 @@ import Comment from '@site/src/components/Comment'
 [![My Skills](https://skillicons.dev/icons?i=ts,aiscript,nodejs,tailwind,vue,react,nextjs,webpack,nginx,docker,vscode,vercel,ps,pr&perline=7)](https://skillicons.dev)
 </div>
 # 🤠🤠🤠 
-<p>
-当前坐标 📍：**深圳**，欢迎交流，掰手腕💪赢我请你吃饭
-</p>
+
+{/* 
+  <p>
+    当前坐标 📍：**深圳**，欢迎交流，掰手腕💪赢我请你吃饭
+  </p>
+*/}
+
+<div className="tw-mt-4 tw-mb-8 tw-w-full md:tw-w-2/3 tw-text-center">
+  <div className="tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-mb-3">简历下载</div>
+  <div className="tw-flex tw-flex-wrap tw-items-center tw-justify-center tw-gap-3">
+    <a
+      href="/resume/product-resume.pdf"
+      download
+      className="tw-inline-flex tw-items-center tw-gap-2 tw-leading-none tw-rounded-lg tw-border tw-border-gray-300 dark:tw-border-gray-700 tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-text-gray-700 dark:tw-text-gray-200 hover:tw-bg-gray-50 dark:hover:tw-bg-gray-800 tw-no-underline"
+    >
+      <Icon icon="ri:file-user-line" className="tw-w-4 tw-h-4 tw-shrink-0 tw-align-middle" />
+      <span className="tw-leading-none">产品简历</span>
+    </a>
+    <a
+      href="/resume/frontend-resume.pdf"
+      download
+      className="tw-inline-flex tw-items-center tw-gap-2 tw-leading-none tw-rounded-lg tw-border tw-border-gray-300 dark:tw-border-gray-700 tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-text-gray-700 dark:tw-text-gray-200 hover:tw-bg-gray-50 dark:hover:tw-bg-gray-800 tw-no-underline"
+    >
+      <Icon icon="ri:code-s-slash-line" className="tw-w-4 tw-h-4 tw-shrink-0 tw-align-middle" />
+      <span className="tw-leading-none">前端简历</span>
+    </a>
+  </div>
+</div>
 
 <div className="tw-flex tw-items-center tw-justify-center tw-gap-8 tw-mt-4 tw-mb-12">
   {/* 微信 - 悬停显示微信号 */}

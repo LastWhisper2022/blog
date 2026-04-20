@@ -11,6 +11,30 @@
     "description": ""
   },
   {
+    "id": "重学前端02.md",
+    "title": "web前端02：关于React中的hooks",
+    "date": "2026-04-18",
+    "permalink": "/blog/relearn02",
+    "tags": [
+      "技术",
+      "前端",
+      "react"
+    ],
+    "description": ""
+  },
+  {
+    "id": "重学前端03.md",
+    "title": "web前端03：typescript使用指南",
+    "date": "2026-04-18",
+    "permalink": "/blog/relearn03",
+    "tags": [
+      "技术",
+      "前端",
+      "typescript"
+    ],
+    "description": ""
+  },
+  {
     "id": "量化学习.md",
     "title": "量化基础知识学习",
     "date": "2026-04-13",
