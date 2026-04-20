@@ -1,4 +1,4 @@
-import React, {type ReactNode} from 'react';
+import React, {type ReactNode, useEffect, useState} from 'react';
 import clsx from 'clsx';
 import {useBlogPost} from '@docusaurus/plugin-content-blog/client';
 import BlogPostItemContainer from '@theme/BlogPostItem/Container';
@@ -14,6 +14,30 @@ import { useDateTimeFormat } from '@docusaurus/theme-common/internal';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import Comment from '@site/src/components/Comment';
 
+const PASSWORD_LEVEL_KEY = 'password_level';
+
+function getTodayPassword() {
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, '0');
+  const d = String(now.getDate()).padStart(2, '0');
+  return `${y}${m}${d}`;
+}
+
+function getPasswordLevel(): 0 | 1 | 2 {
+  if (typeof window === 'undefined') return 0;
+  const raw = window.localStorage.getItem(PASSWORD_LEVEL_KEY);
+  const n = Number(raw);
+  return n === 1 || n === 2 ? n : 0;
+}
+
+function getExpectedPassword(level: 0 | 1 | 2) {
+  const today = getTodayPassword();
+  if (level === 0) return '19970612';
+  if (level === 1) return today;
+  return `${today}cx`;
+}
+
 // apply a bottom margin in list view
 function useContainerClassName() {
   const {isBlogPostPage} = useBlogPost();
@@ -23,6 +47,11 @@ function useContainerClassName() {
 export default function BlogPostItem({children, className}: Props): ReactNode {
   const {metadata, isBlogPostPage} = useBlogPost();
   const {frontMatter, title, date, permalink, description, readingTime} = metadata;
+  const [inputPassword, setInputPassword] = useState('');
+  const [authError, setAuthError] = useState('');
+  const [isUnlocked, setIsUnlocked] = useState(false);
+
+  const isLifePost = metadata.tags?.some((tag) => tag.label === '生活');
   // @ts-ignore
   const assetsImage = (metadata as any).assets?.image;
   // @ts-ignore
@@ -123,6 +152,67 @@ export default function BlogPostItem({children, className}: Props): ReactNode {
         </Card>
     </Link>
      );
+  }
+
+  useEffect(() => {
+    if (!isBlogPostPage || !isLifePost) return;
+    setIsUnlocked(false);
+    setInputPassword('');
+    setAuthError('');
+  }, [isBlogPostPage, isLifePost, permalink]);
+
+  const handlePasswordSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const level = getPasswordLevel();
+    const expected = getExpectedPassword(level);
+
+    if (inputPassword.trim() === expected) {
+      const nextLevel: 0 | 1 | 2 = level === 2 ? 0 : ((level + 1) as 0 | 1 | 2);
+      if (typeof window !== 'undefined') {
+        window.localStorage.setItem(PASSWORD_LEVEL_KEY, String(nextLevel));
+      }
+      setIsUnlocked(true);
+      setAuthError('');
+      setInputPassword('');
+      return;
+    }
+    const levelsign = {
+      0: '',
+      1: '!',
+      2: '!!',
+    }
+    setAuthError(`密码错误，请重试${levelsign[level] || ''}`);
+  };
+
+  if (isBlogPostPage && isLifePost && !isUnlocked) {
+    return (
+      <BlogPostItemContainer className={clsx(containerClassName, className)}>
+        <div className="tw-max-w-md tw-mx-auto tw-my-20 tw-rounded-xl tw-border tw-border-gray-200 dark:tw-border-gray-700 tw-p-6 tw-bg-white dark:tw-bg-gray-900">
+          <h2 className="tw-text-xl tw-font-semibold tw-mb-2">内容访问验证</h2>
+          <p className="tw-text-sm tw-text-gray-600 dark:tw-text-gray-300 tw-mb-4">
+            请输入我的生日：YYYYMMDD
+          </p>
+          <form onSubmit={handlePasswordSubmit} className="tw-flex tw-flex-col tw-gap-3">
+            <input
+              type="password"
+              value={inputPassword}
+              onChange={(e) => setInputPassword(e.target.value)}
+              placeholder="请输入密码"
+              className="tw-w-full tw-rounded-lg tw-border tw-border-gray-300 dark:tw-border-gray-700 tw-bg-transparent tw-px-3 tw-py-2 tw-text-sm"
+            />
+            {authError && (
+              <div className="tw-text-sm tw-text-red-500">{authError}</div>
+            )}
+            <button
+              type="submit"
+              className="tw-rounded-lg tw-bg-gray-900 dark:tw-bg-gray-100 tw-text-white dark:tw-text-gray-900 tw-px-4 tw-py-2 tw-text-sm tw-font-medium"
+            >
+              验证并访问
+            </button>
+          </form>
+        </div>
+      </BlogPostItemContainer>
+    );
   }
 
   return (
