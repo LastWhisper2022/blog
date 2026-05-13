@@ -61,7 +61,7 @@ function User() {
 
 ### 3.高频应用场景
 
-#### 主题切换
+#### 3.1 主题切换
 
 ```jsx
 const ThemeContext = createContext();

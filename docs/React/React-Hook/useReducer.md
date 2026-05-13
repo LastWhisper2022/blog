@@ -89,7 +89,7 @@ function App() {
 ```
 
 ### 3.高频应用场景
-#### 请求状态管理（loading / data / error）
+#### 3.1 请求状态管理（loading / data / error）
 如请求用户列表页面需要管理loading，error，data。所有状态更新逻辑都集中在reducer，代码结构清晰。
 
 **使用useState：**
@@ -230,7 +230,7 @@ function UserList() {
 
 
 
-#### 购物车（添加/删除商品，增加/减少数量，清空购物车）
+#### 3.2 购物车（添加/删除商品，增加/减少数量，清空购物车）
 ```jsx
 #购物车数据
 const initialState = {

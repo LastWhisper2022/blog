@@ -51,7 +51,7 @@ const Child = React.memo(() => {
 
 ### 4.useCallback 配合 React.memo
 
-#### 错误写法
+#### 4.1 错误写法
 
 ```jsx
 function App() {
@@ -65,7 +65,7 @@ function App() {
 }
 ```
 
-#### 正确写法
+#### 4.2 正确写法
 
 ```jsx
 const handleClick = useCallback(() => {
@@ -73,7 +73,7 @@ const handleClick = useCallback(() => {
 }, []);
 ```
 
-#### 完整的正确搭配
+#### 4.3 完整的正确搭配
 
 ```jsx
 const Child = React.memo(({ onClick }) => {
@@ -101,7 +101,7 @@ function App() {
 
 很多人误解认为"memo 阻止组件 render"，其实不是，真正的目的是**"跳过函数重新执行"**，即复用上一次 render 结果。
 
-#### 什么时候适合 React.memo
+#### 5.1 什么时候适合 React.memo
 
 **纯展示组件：** Card、ListItem、Avatar、MessageItem
 

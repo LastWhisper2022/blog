@@ -29,7 +29,7 @@ function App() {
 
 ### 3.高频应用场景
 
-#### 列表过滤
+#### 3.1 列表过滤
 
 ```jsx
 // 如果 list 很大，每次 render 都会重新 filter，使用 useMemo 优化
@@ -41,7 +41,7 @@ const filteredList = useMemo(() => {
 // 此时，只有 list 变化、keyword 变化才重新计算
 ```
 
-#### 对象稳定
+#### 3.2 对象稳定
 
 ```jsx
 // 每次 render 都是新对象，即 {} !== {}
@@ -54,7 +54,7 @@ const user = useMemo(() => {
 // 现在 user 引用稳定
 ```
 
-#### 避免 effect 重复执行
+#### 3.3 避免 effect 重复执行
 
 ```jsx
 // options 每次都是新对象，所以 effect 每次执行

@@ -22,7 +22,7 @@ const myRef = useRef(初始值);
 
 ### 3.高频应用场景
 
-#### 获取 DOM
+#### 3.1 获取 DOM
 
 ```jsx
 import { useRef, useEffect } from "react";
@@ -38,7 +38,7 @@ function App() {
 }
 ```
 
-#### 保存定时器 ID
+#### 3.2 保存定时器 ID
 
 ```jsx
 function App() {
@@ -63,7 +63,7 @@ function App() {
 }
 ```
 
-#### 保存上一次值
+#### 3.3 保存上一次值
 
 ```jsx
 import { useEffect, useRef } from "react";
@@ -86,7 +86,7 @@ function App() {
 }
 ```
 
-#### 避免重复 render（性能优化）
+#### 3.4 避免重复 render（性能优化）
 
 因为不需要每次移动都 render，所以使用 `useRef` 比 `useState` 性能更好。
 
@@ -98,7 +98,7 @@ window.addEventListener("mousemove", (e) => {
 });
 ```
 
-#### 结合 forwardRef，useImperativeHandle 实现父组件访问子组件内部 DOM 或方法
+#### 3.5 结合 forwardRef，useImperativeHandle 实现父组件访问子组件内部 DOM 或方法
 
 不推荐父组件调用子组件的方法，推荐子组件通过 props 控制。更需要关注的是父组件的 state。只有在极端情况下才使用：1. 输入框 focus。2. 滚动控制。3. 动画控制。4. 第三方库：echarts，video，canvas。5. 表单库：reset()，validate()，submit()。
 

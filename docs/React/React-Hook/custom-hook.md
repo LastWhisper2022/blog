@@ -41,7 +41,7 @@ function App() {
 
 ### 3.高频使用场景
 
-#### 请求接口
+#### 3.1 请求接口
 
 ```jsx
 function useRequest(api) {
@@ -68,7 +68,7 @@ function App() {
 }
 ```
 
-#### localStorage
+#### 3.2 localStorage
 
 ```jsx
 function useLocalStorage(key, defaultValue) {
@@ -91,7 +91,7 @@ const [theme, setTheme] = useLocalStorage("theme", "light");
 
 ### 4.其他需要知道的
 
-#### Hook 的最大优势："组合能力"
+#### 4.1 Hook 的最大优势："组合能力"
 
 ```jsx
 function useChat() {
@@ -103,7 +103,7 @@ function useChat() {
 // Hook 可以互相组合
 ```
 
-#### Hook 的设计思想："把状态逻辑从 UI 中拆出来"
+#### 4.2 Hook 的设计思想："把状态逻辑从 UI 中拆出来"
 
 **组件** 负责 **UI**，**Hook** 负责 **逻辑**
 
@@ -113,7 +113,7 @@ function useChat() {
 - **可复用：** 多个组件能用
 - **隐藏复杂性：** 外部 `const { data } = useRequest()` 很简单，内部可能很复杂
 
-#### 自定义 Hook 和组件的区别
+#### 4.4 自定义 Hook 和组件的区别
 
 组件专注页面，Hook 专注逻辑。
 

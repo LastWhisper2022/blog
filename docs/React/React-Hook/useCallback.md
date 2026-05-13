@@ -26,7 +26,7 @@ function App() {
 
 ### 2.高频应用场景
 
-#### 解决函数作为 props，React.memo 失效的问题
+#### 2.1 解决函数作为 props，React.memo 失效的问题
 
 ```jsx
 // 子组件
@@ -81,7 +81,7 @@ function App() {
 // 现在点击 +1 时，child 不会 render，因为 props 没变化
 ```
 
-#### 配合 useEffect 依赖函数
+#### 2.2 配合 useEffect 依赖函数
 
 ```jsx
 const handleClick = useCallback(() => {
@@ -93,7 +93,7 @@ useEffect(() => {
 }, [handleClick]);
 ```
 
-#### 闭包问题
+#### 2.3 闭包问题
 
 ```jsx
 // 错误：count 永远是初始值，因为闭包缓存了旧值
