@@ -44,6 +44,12 @@ const config: Config = {
         { to: "/project", label: "作品", position: "right" },
         { to: "/about", label: "关于", position: "right" },
         {
+          type: "doc",
+          docId: "docusaurus-style",
+          label: "知识库",
+          position: "right",
+        },
+        {
           type: "search",
           position: "right",
         },
