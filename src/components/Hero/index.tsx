@@ -1,89 +1,14 @@
-import React, { useState, useRef, useMemo, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ProjectTicker from "../ProjectTicker";
-import blogPosts from "@site/src/data/blogPosts.json";
-import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { motion } from "framer-motion";
 import { Play, Pause } from "lucide-react";
-import Typewriter from 'typewriter-effect';
-
-// --- Constants & Helpers ---
-
-const THEMES = [
-    {
-        mainColor: 'tw-text-blue-400', // 亮蓝色 (Blue-400)
-        glowColor: '#3b82f6', // 亮蓝光晕 (Blue-500)
-        glowRgba: '59, 130, 246',
-        codeColor: '#60a5fa', // 更亮的蓝 (Blue-400)
-        timeColor: 'tw-text-blue-300' // 浅蓝色时间
-    }
-];
-
-const DANMAKU_TRACKS = [10, 16, 22, 28, 34];
-
-const getDanmakuDuration = (index: number) => 20 + (index % DANMAKU_TRACKS.length) * 2.5;
-
-const getFormattedTime = () => {
-    const now = new Date();
-    return now.toLocaleString('zh-CN', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false
-    }).replace(/\//g, '-');
-};
-
-/**
- * 弹幕单项组件
- * 用于在背景中显示滚动的博客文章标题
- */
-interface DanmakuItemProps {
-    post: {
-        title: string;
-        permalink: string;
-    };
-    top: string;
-    duration: number;
-    delay: number;
-}
-
-const DanmakuItem: React.FC<DanmakuItemProps> = React.memo(({ post, top, duration, delay }) => {
-    return (
-        <motion.div
-            initial={{ x: "100vw" }}
-            animate={{ x: "-100%" }}
-            transition={{
-                repeat: Infinity,
-                duration: duration,
-                delay: delay,
-                ease: "linear",
-            }}
-            className="tw-absolute tw-whitespace-nowrap tw-z-0 hover:tw-z-50"
-            style={{ top }}
-        >
-            <Link
-                to={post.permalink}
-                className="tw-inline-flex tw-items-center tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-white/50 tw-text-white hover:tw-text-blue-400 hover:tw-border-blue-400 tw-transition-all tw-duration-300 no-underline hover:no-underline tw-text-sm md:tw-text-base tw-backdrop-blur-sm"
-                style={{ fontFamily: "'Orbitron', sans-serif", letterSpacing: "1px", textShadow: "0 0 5px rgba(255,255,255,0.3)" }}
-            >
-                <span className="tw-mr-2 tw-text-blue-400">•</span>
-                {post.title}
-            </Link>
-        </motion.div>
-    );
-});
 
 const Hero = () => {
-    const textRef = useRef<HTMLDivElement>(null);
-
     // 背景资源
     const pcBgUrl = useBaseUrl("/img/pc-bg-optimized.mp4");
     const mobileBgUrl = useBaseUrl("/img/mobile-bg-optimized.mp4");
-    const pcPosterUrl = useBaseUrl("/img/pc-bg-poster.jpg");
-    const mobilePosterUrl = useBaseUrl("/img/mobile-bg-poster.jpg");
+    const logoUrl = useBaseUrl("/svg/logo.svg");
 
     // 移动端视频控制状态
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -91,24 +16,7 @@ const Hero = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isDesktop, setIsDesktop] = useState(false);
     const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
-    const [loopCount, setLoopCount] = useState(0);
-
-    const currentTheme = THEMES[loopCount % THEMES.length];
-
-    // 实时时间状态
-    useEffect(() => {
-        const updateTime = () => {
-            const timeString = getFormattedTime();
-            // 直接更新 DOM 元素，实现打字机后的动态时间效果
-            const clockEl = document.getElementById('hero-clock');
-            if (clockEl) {
-                clockEl.innerText = timeString;
-            }
-        };
-
-        const timer = setInterval(updateTime, 1000);
-        return () => clearInterval(timer);
-    }, []);
+    const [isVideoReady, setIsVideoReady] = useState(false);
 
     useEffect(() => {
         const mediaQuery = window.matchMedia('(min-width: 768px)');
@@ -121,7 +29,10 @@ const Hero = () => {
 
     useEffect(() => {
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (prefersReducedMotion) return;
+        if (prefersReducedMotion) {
+            setIsVideoReady(true);
+            return;
+        }
 
         const timer = window.setTimeout(() => setShouldLoadVideo(true), 800);
         return () => window.clearTimeout(timer);
@@ -135,6 +46,12 @@ const Hero = () => {
 
         activeVideo.load();
         void activeVideo.play();
+    }, [isDesktop, shouldLoadVideo]);
+
+    useEffect(() => {
+        if (shouldLoadVideo) {
+            setIsVideoReady(false);
+        }
     }, [isDesktop, shouldLoadVideo]);
 
     // 切换视频播放状态
@@ -155,16 +72,6 @@ const Hero = () => {
         }
     };
 
-    // 生成弹幕轨道配置
-    const danmakuItems = useMemo(() => (blogPosts || []).map((post, index) => {
-        return {
-            post,
-            track: index % DANMAKU_TRACKS.length,
-            duration: getDanmakuDuration(index),
-            delay: index * 3
-        };
-    }), []);
-
     return (
         <div className="tw-relative tw-h-[100svh] md:tw-h-[100vh] tw-bg-gray-50 dark:tw-bg-black tw-text-gray-900 dark:tw-text-white tw-overflow-hidden tw-flex tw-flex-col tw--mt-[60px] tw-pt-[60px]">
             {/* 背景层 */}
@@ -179,8 +86,9 @@ const Hero = () => {
                         preload={shouldLoadVideo ? "metadata" : "none"}
                         onPlay={() => setIsPlaying(true)}
                         onPause={() => setIsPlaying(false)}
+                        onCanPlay={() => setIsVideoReady(true)}
+                        onError={() => setIsVideoReady(true)}
                         className="tw-w-full tw-h-full tw-object-cover"
-                        poster={mobilePosterUrl}
                     >
                         {!isDesktop && shouldLoadVideo && <source src={mobileBgUrl} type="video/mp4" />}
                     </video>
@@ -203,26 +111,19 @@ const Hero = () => {
                         muted
                         playsInline
                         preload={shouldLoadVideo ? "metadata" : "none"}
-                        poster={pcPosterUrl}
+                        onCanPlay={() => setIsVideoReady(true)}
+                        onError={() => setIsVideoReady(true)}
                         className="tw-w-full tw-h-full tw-object-cover tw-absolute tw-inset-0"
                     >
                         {isDesktop && shouldLoadVideo && <source src={pcBgUrl} type="video/mp4" />}
                     </video>
                 </div>
-            </div>
 
-            {/* 弹幕层 */}
-            <div className="tw-hidden md:tw-block tw-absolute tw-inset-0 tw-z-10 tw-overflow-hidden tw-pointer-events-none tw-opacity-100">
-                <div className="tw-relative tw-w-full tw-h-full tw-pointer-events-auto">
-                    {danmakuItems.map((item) => (
-                        <DanmakuItem
-                            key={item.post.permalink}
-                            post={item.post}
-                            top={`${DANMAKU_TRACKS[item.track]}%`}
-                            duration={item.duration}
-                            delay={item.delay}
-                        />
-                    ))}
+                <div className={`hero-video-loader ${isVideoReady ? 'hero-video-loader--hidden' : ''}`} aria-hidden="true">
+                    <div className="hero-video-loader__mark">
+                        <img src={logoUrl} alt="" />
+                    </div>
+                    <div className="hero-video-loader__pulse" />
                 </div>
             </div>
 
@@ -234,70 +135,24 @@ const Hero = () => {
                     transition={{ duration: 0.6 }}
                     className="tw-absolute tw-top-[25%] md:tw-top-[20%] tw-left-0 tw-w-full tw-flex tw-flex-col tw-items-center tw-z-20"
                 >
-                    {/* 打字机效果区域 */}
-                    <div className="tw-h-[220px] md:tw-h-[320px] md:[@media(max-height:800px)]:tw-h-[240px] tw-w-full tw-max-w-5xl tw-flex tw-items-center tw-justify-center tw-relative tw-overflow-hidden">
-                        <div ref={textRef} className={`hero-time-copy tw-text-base md:tw-text-2xl tw-font-bold ${currentTheme.mainColor} tw-transition-opacity tw-duration-700 tw-leading-loose tw-text-center tw-w-full tw-whitespace-pre-wrap tw-break-words`} style={{ textShadow: `0 0 10px rgba(${currentTheme.glowRgba}, 0.8), 0 0 20px rgba(${currentTheme.glowRgba}, 0.4)` }}>
-                            <Typewriter
-                                onInit={(typewriter) => {
-                                    const timeString = getFormattedTime();
-                                    const setTypewriterHtml = (html: string) => {
-                                        const wrapper = textRef.current?.querySelector('.Typewriter__wrapper');
-                                        if (wrapper instanceof HTMLElement) {
-                                            wrapper.innerHTML = html;
-                                        }
-                                    };
-
-                                    typewriter
-                                        .changeDelay(12)
-                                        .typeString('> INITIALIZING_TEMPORAL_SCAN...<br/>')
-                                        .pauseFor(220)
-                                        .typeString('> DETECTING_FLOW: PAST... NOW... NEXT...<br/>')
-                                        .pauseFor(260)
-                                        .typeString('> TIME_IS_NON_REFUNDABLE')
-                                        .pauseFor(720)
-                                        .deleteAll(1)
-                                        .callFunction(() => {
-                                            setTypewriterHtml(`<span class="hero-code-line" style="--hero-code-glow: ${currentTheme.codeColor};">if (t == NOW) { return CHERISH; }</span>`);
-                                        })
-                                        .pauseFor(1350)
-                                        .callFunction(() => {
-                                            if (textRef.current) {
-                                                textRef.current.style.opacity = '0';
-                                            }
-                                        })
-                                        .pauseFor(520)
-                                        .callFunction(() => {
-                                            if (textRef.current) {
-                                                textRef.current.style.opacity = '1';
-                                            }
-                                            setTypewriterHtml(`
-                                            <div class="hero-time-statement" style="--hero-glow: ${currentTheme.glowColor}; --hero-glow-rgb: ${currentTheme.glowRgba};">
-                                                <div class="hero-time-axis" aria-hidden="true">
-                                                    <span>PAST</span>
-                                                    <i></i>
-                                                    <span>NOW</span>
-                                                    <i></i>
-                                                    <span>NEXT</span>
-                                                </div>
-                                                <div class="hero-time-title">时间易逝，感受<span>当下</span>。</div>
-                                                <div class="hero-time-scan" aria-hidden="true"></div>
-                                                <div class="hero-time-clock">SYSTEM_TIME: <span id="hero-clock">${timeString}</span></div>
-                                            </div>
-                                            `);
-                                        })
-                                        .pauseFor(7200)
-                                        .callFunction(() => {
-                                            setLoopCount((prev) => prev + 1);
-                                        })
-                                        .start();
-                                }}
-                                options={{
-                                    autoStart: true,
-                                    loop: false,
-                                    cursor: '█',
-                                    delay: 40,
-                                }}
-                            />
+                    <div className="tw-h-[220px] md:tw-h-[300px] md:[@media(max-height:800px)]:tw-h-[230px] tw-w-full tw-max-w-5xl tw-flex tw-items-center tw-justify-center tw-relative tw-overflow-hidden">
+                        <div className="hero-now-module" aria-label="时间易逝，感受当下。">
+                            <div className="hero-now-axis" aria-hidden="true">
+                                <span className="hero-now-axis__past">PAST</span>
+                                <i></i>
+                                <span className="hero-now-axis__now">NOW</span>
+                                <i></i>
+                                <span className="hero-now-axis__next">NEXT</span>
+                            </div>
+                            <div className="hero-now-dot" aria-hidden="true" />
+                            <h1 className="hero-now-title">
+                                时间易逝，感受<span>当下</span>
+                            </h1>
+                            <div className="hero-now-flow" aria-hidden="true">
+                                <i></i>
+                                <b></b>
+                                <i></i>
+                            </div>
                         </div>
                     </div>
                 </motion.div>
