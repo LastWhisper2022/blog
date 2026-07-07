@@ -5,7 +5,6 @@ import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { motion } from "framer-motion";
 import { Play, Pause } from "lucide-react";
-import { useHistory } from "@docusaurus/router";
 import Typewriter from 'typewriter-effect';
 
 // --- Constants & Helpers ---
@@ -78,8 +77,6 @@ const DanmakuItem: React.FC<DanmakuItemProps> = React.memo(({ post, top, duratio
 });
 
 const Hero = () => {
-    const history = useHistory();
-    const [isClicked, setIsClicked] = useState(false);
     const textRef = useRef<HTMLDivElement>(null);
 
     // 背景资源
@@ -158,27 +155,6 @@ const Hero = () => {
         }
     };
 
-    // 处理“开始阅读”点击事件
-    const handleRandomRead = () => {
-        setIsClicked(true);
-
-        const isMobile = window.innerWidth < 768;
-
-        if (isMobile) {
-            setIsPlaying(true);
-            setShouldLoadVideo(true);
-            if (videoRef.current) void videoRef.current.play();
-
-            // 移动端：播放5秒视频动画后跳转
-            setTimeout(() => {
-                history.push('/blog');
-            }, 5000);
-        } else {
-            // PC端：直接跳转
-            history.push('/blog');
-        }
-    };
-
     // 生成弹幕轨道配置
     const danmakuItems = useMemo(() => (blogPosts || []).map((post, index) => {
         return {
@@ -190,7 +166,7 @@ const Hero = () => {
     }), []);
 
     return (
-        <div className="tw-relative tw-h-[calc(100svh-60px)] md:tw-h-[calc(100vh-60px)] tw-bg-gray-50 dark:tw-bg-black tw-text-gray-900 dark:tw-text-white tw-overflow-hidden tw-flex tw-flex-col tw--mt-[60px] tw-pt-[60px]">
+        <div className="tw-relative tw-h-[100svh] md:tw-h-[100vh] tw-bg-gray-50 dark:tw-bg-black tw-text-gray-900 dark:tw-text-white tw-overflow-hidden tw-flex tw-flex-col tw--mt-[60px] tw-pt-[60px]">
             {/* 背景层 */}
             <div className="tw-absolute tw-inset-0 tw-z-0 tw-overflow-hidden">
                 {/* 移动端背景 (视频) */}
@@ -211,7 +187,7 @@ const Hero = () => {
                     {/* 移动端播放/暂停控制按钮 */}
                     <button
                         onClick={togglePlay}
-                        className={`tw-absolute tw-bottom-24 tw-right-6 tw-z-20 tw-p-3 tw-bg-black/30 hover:tw-bg-black/50 tw-rounded-full tw-text-white/80 hover:tw-text-white tw-backdrop-blur-sm tw-transition-all tw-duration-300 ${isClicked ? 'tw-opacity-0' : 'tw-opacity-100'}`}
+                        className="tw-absolute tw-bottom-24 tw-right-6 tw-z-20 tw-p-3 tw-bg-black/30 hover:tw-bg-black/50 tw-rounded-full tw-text-white/80 hover:tw-text-white tw-backdrop-blur-sm tw-transition-all tw-duration-300"
                         aria-label={isPlaying ? "Pause background" : "Play background"}
                     >
                         {isPlaying ? <Pause size={20} /> : <Play size={20} />}
@@ -236,7 +212,7 @@ const Hero = () => {
             </div>
 
             {/* 弹幕层 */}
-        <div className={`tw-hidden md:tw-block tw-absolute tw-inset-0 tw-z-10 tw-overflow-hidden tw-pointer-events-none tw-transition-opacity tw-duration-1000 ${isClicked ? 'tw-opacity-0 md:tw-opacity-100' : 'tw-opacity-100'}`}>
+            <div className="tw-hidden md:tw-block tw-absolute tw-inset-0 tw-z-10 tw-overflow-hidden tw-pointer-events-none tw-opacity-100">
                 <div className="tw-relative tw-w-full tw-h-full tw-pointer-events-auto">
                     {danmakuItems.map((item) => (
                         <DanmakuItem
@@ -251,7 +227,7 @@ const Hero = () => {
             </div>
 
             {/* 主要内容区域 (居中) */}
-            <div className={`tw-relative tw-z-20 tw-container tw-mx-auto tw-px-4 tw-flex-1 tw-w-full tw-h-full tw-transition-opacity tw-duration-1000 ${isClicked ? 'tw-opacity-0 md:tw-opacity-100' : 'tw-opacity-100'}`}>
+            <div className="tw-relative tw-z-20 tw-container tw-mx-auto tw-px-4 tw-flex-1 tw-w-full tw-h-full">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -306,22 +282,10 @@ const Hero = () => {
                         </div>
                     </div>
                 </motion.div>
-                <div className="tw-absolute tw-bottom-[22%] md:tw-bottom-[20%] tw-left-0 tw-w-full tw-text-center tw-z-30">
-                    <button
-                        onClick={handleRandomRead}
-                        disabled={isClicked}
-                        className={`tw-inline-block tw-group tw-relative tw-items-center tw-gap-3 tw-px-6 tw-py-3 md:tw-px-8 md:tw-py-4 tw-bg-white/10 tw-backdrop-blur-md tw-border tw-text-white tw-rounded-full tw-font-bold tw-text-base md:tw-text-lg tw-shadow-xl tw-transition-all tw-duration-300 tw-overflow-hidden ${isClicked ? 'tw-border-t-transparent tw-border-l-transparent tw-border-r-white/50 tw-border-b-white/50 tw-animate-spin' : 'tw-border-white/30'}`}
-                        style={{ fontFamily: "'Orbitron', sans-serif", letterSpacing: "2px", animationDuration: isClicked ? "1s" : "0s" }}
-                    >
-                        <span className={`tw-relative tw-z-10 tw-flex tw-items-center tw-gap-2 ${isClicked ? 'tw-opacity-0' : 'tw-opacity-100'}`}>
-                            开始阅读
-                        </span>
-                    </button>
-                </div>
             </div>
 
             {/* 精选作品区域 */}
-            <div className={`tw-relative tw-z-20 tw-mt-auto tw-pb-2 tw-shrink-0 tw-transition-opacity tw-duration-1000 ${isClicked ? 'tw-opacity-0 md:tw-opacity-100' : 'tw-opacity-100'}`}>
+            <div className="tw-relative tw-z-20 tw-mt-auto tw-shrink-0">
                 <div className="tw-container tw-mx-auto tw-px-4 tw-mb-2">
                     <h2 className="tw-text-xl md:tw-text-2xl tw-font-bold tw-text-center md:tw-text-left tw-mb-2 tw-text-white" style={{ fontFamily: "'Orbitron', sans-serif" }}>
                         我的作品
@@ -329,19 +293,6 @@ const Hero = () => {
                     <div className="tw-h-1 tw-w-16 tw-bg-blue-500 tw-mx-auto md:tw-mx-0"></div>
                 </div>
                 <ProjectTicker />
-            </div>
-
-            {/* 转场动画层 (PC & Mobile) */}
-            <div
-                className={`tw-fixed tw-inset-0 tw-z-[300] tw-bg-black tw-flex tw-items-center tw-justify-center tw-pointer-events-none tw-transition-opacity tw-duration-1000 md:tw-hidden ${isClicked ? 'tw-opacity-100' : 'tw-opacity-0'}`}
-                style={{ transitionDelay: isClicked ? '4000ms' : '0ms' }}
-            >
-                <div className="tw-text-center">
-                    <h2 className="tw-text-white tw-text-2xl tw-font-bold tw-tracking-[0.5em] tw-animate-pulse tw-mb-2" style={{ fontFamily: "'Orbitron', sans-serif" }}>
-                        SYSTEM LAUNCHING
-                    </h2>
-                    <div className="tw-w-32 tw-h-1 tw-bg-blue-500 tw-mx-auto tw-rounded-full tw-animate-pulse"></div>
-                </div>
             </div>
         </div>
     );

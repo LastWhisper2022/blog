@@ -352,47 +352,73 @@ html[data-theme='dark'] .DocSearch-Search-Icon {
   --ring: 212.7 26.8% 83.9%;
 }
 
-/* 移除 navbar 边框和阴影，设置透明背景 (Home Page Only) - Moved to End for Specificity */
-html body.home-page {
+/* 首页导航：透明暗色毛玻璃，融入视频背景 */
+.home-page {
   --ifm-navbar-background-color: transparent !important;
 }
 
-html body.home-page .navbar,
-html body.home-page .navbar__inner,
-html body.home-page .navbar-sidebar__backdrop,
-html body.home-page nav.navbar,
-html body.home-page div[class^='navbar'] {
+.home-page .navbar,
+.home-page nav.navbar {
   border-bottom: none !important;
   box-shadow: none !important;
-  background-color: transparent !important;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.28),
+    rgba(0, 0, 0, 0.08)
+  ) !important;
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+}
+
+.home-page .navbar__inner {
   background: transparent !important;
-  backdrop-filter: none !important;
+}
+
+.home-page .navbar-sidebar {
+  background: rgba(12, 12, 12, 0.96) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.home-page .navbar-sidebar__backdrop {
+  background: rgba(0, 0, 0, 0.45) !important;
 }
 
 /* 隐藏 Navbar Logo (Home Page Only) */
-html body.home-page .navbar__logo {
+.home-page .navbar__logo {
   display: none !important;
 }
 
 /* 强制 Navbar 链接文字为白色，且应用 Gundam 字体 (Home Page Only) */
-html body.home-page .navbar__item,
-html body.home-page .navbar__link {
+.home-page .navbar__item,
+.home-page .navbar__link {
   color: #ffffff !important;
   font-family: 'Orbitron', sans-serif !important;
   letter-spacing: 1px;
 }
 
 /* 强制 Navbar 链接 hover 状态保持白色或微调 (Home Page Only) */
-html body.home-page .navbar__item:hover,
-html body.home-page .navbar__link:hover {
+.home-page .navbar__item:hover,
+.home-page .navbar__link:hover {
   color: #e0e0e0 !important;
 }
 
-/* 强制汉堡菜单为白色 */
-html body.home-page .navbar__toggle {
+.home-page .navbar__search-input,
+.home-page .DocSearch-Button {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.16) !important;
   color: #ffffff !important;
 }
-html body.home-page .navbar__toggle svg {
+
+.home-page .navbar__search-input::placeholder {
+  color: rgba(255, 255, 255, 0.68) !important;
+}
+
+/* 强制汉堡菜单为白色 */
+.home-page .navbar__toggle {
+  color: #ffffff !important;
+}
+.home-page .navbar__toggle svg {
   fill: #ffffff !important;
 }
 
