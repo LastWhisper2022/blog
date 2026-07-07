@@ -235,38 +235,57 @@ const Hero = () => {
                     className="tw-absolute tw-top-[25%] md:tw-top-[20%] tw-left-0 tw-w-full tw-flex tw-flex-col tw-items-center tw-z-20"
                 >
                     {/* 打字机效果区域 */}
-                    <div className="tw-h-[180px] md:tw-h-[300px] md:[@media(max-height:800px)]:tw-h-[200px] tw-w-full tw-max-w-4xl tw-flex tw-items-center tw-justify-center tw-relative tw-overflow-hidden">
-                        <div ref={textRef} className={`tw-text-base md:tw-text-2xl tw-font-bold ${currentTheme.mainColor} tw-tracking-widest tw-transition-opacity tw-duration-1000 tw-leading-loose tw-text-center tw-w-full tw-whitespace-pre-wrap tw-break-words`} style={{ fontFamily: "'Orbitron', sans-serif", textShadow: `0 0 10px rgba(${currentTheme.glowRgba}, 0.8), 0 0 20px rgba(${currentTheme.glowRgba}, 0.4)` }}>
+                    <div className="tw-h-[220px] md:tw-h-[320px] md:[@media(max-height:800px)]:tw-h-[240px] tw-w-full tw-max-w-5xl tw-flex tw-items-center tw-justify-center tw-relative tw-overflow-hidden">
+                        <div ref={textRef} className={`hero-time-copy tw-text-base md:tw-text-2xl tw-font-bold ${currentTheme.mainColor} tw-transition-opacity tw-duration-700 tw-leading-loose tw-text-center tw-w-full tw-whitespace-pre-wrap tw-break-words`} style={{ textShadow: `0 0 10px rgba(${currentTheme.glowRgba}, 0.8), 0 0 20px rgba(${currentTheme.glowRgba}, 0.4)` }}>
                             <Typewriter
                                 onInit={(typewriter) => {
                                     const timeString = getFormattedTime();
+                                    const setTypewriterHtml = (html: string) => {
+                                        const wrapper = textRef.current?.querySelector('.Typewriter__wrapper');
+                                        if (wrapper instanceof HTMLElement) {
+                                            wrapper.innerHTML = html;
+                                        }
+                                    };
+
                                     typewriter
-                                        .changeDelay(40)
+                                        .changeDelay(12)
                                         .typeString('> INITIALIZING_TEMPORAL_SCAN...<br/>')
-                                        .pauseFor(300)
-                                        .typeString('> DETECTING_FLOW: -1s... -1m... -1h...<br/>')
-                                        .pauseFor(300)
-                                        .typeString('> WARNING: TIME_IS_NON_REFUNDABLE<br/>')
-                                        .pauseFor(800)
+                                        .pauseFor(220)
+                                        .typeString('> DETECTING_FLOW: PAST... NOW... NEXT...<br/>')
+                                        .pauseFor(260)
+                                        .typeString('> TIME_IS_NON_REFUNDABLE')
+                                        .pauseFor(720)
                                         .deleteAll(1)
-                                        .typeString(`<span style="color: white; text-shadow: 0 0 10px white, 0 0 20px ${currentTheme.codeColor}; font-size: 1.2em;">"if (t == NOW) { return CHERISH; } else { return VOID; }"</span>`)
-                                        .pauseFor(3000)
+                                        .callFunction(() => {
+                                            setTypewriterHtml(`<span class="hero-code-line" style="--hero-code-glow: ${currentTheme.codeColor};">if (t == NOW) { return CHERISH; }</span>`);
+                                        })
+                                        .pauseFor(1350)
                                         .callFunction(() => {
                                             if (textRef.current) {
                                                 textRef.current.style.opacity = '0';
                                             }
                                         })
-                                        .pauseFor(1000)
-                                        .deleteAll(1)
+                                        .pauseFor(520)
                                         .callFunction(() => {
                                             if (textRef.current) {
                                                 textRef.current.style.opacity = '1';
                                             }
+                                            setTypewriterHtml(`
+                                            <div class="hero-time-statement" style="--hero-glow: ${currentTheme.glowColor}; --hero-glow-rgb: ${currentTheme.glowRgba};">
+                                                <div class="hero-time-axis" aria-hidden="true">
+                                                    <span>PAST</span>
+                                                    <i></i>
+                                                    <span>NOW</span>
+                                                    <i></i>
+                                                    <span>NEXT</span>
+                                                </div>
+                                                <div class="hero-time-title">时间易逝，感受<span>当下</span>。</div>
+                                                <div class="hero-time-scan" aria-hidden="true"></div>
+                                                <div class="hero-time-clock">SYSTEM_TIME: <span id="hero-clock">${timeString}</span></div>
+                                            </div>
+                                            `);
                                         })
-                                        .typeString(`<span style="color: #fff; font-size: 1.3em; font-weight: bold; text-shadow: 0 0 10px #fff, 0 0 20px ${currentTheme.glowColor}, 0 0 40px ${currentTheme.glowColor};">"时间易逝，感受当下。"</span><br/>`)
-                                        .pauseFor(500)
-                                        .typeString(`<span class="tw-text-sm ${currentTheme.timeColor} tw-opacity-90" style="text-shadow: 0 0 5px rgba(${currentTheme.glowRgba}, 0.5);">SYSTEM_TIME: <span id="hero-clock">${timeString}</span></span>`)
-                                        .pauseFor(5000)
+                                        .pauseFor(7200)
                                         .callFunction(() => {
                                             setLoopCount((prev) => prev + 1);
                                         })
