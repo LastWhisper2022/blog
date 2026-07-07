@@ -211,14 +211,186 @@ html[data-theme='dark'] .DocSearch-Search-Icon {
     color: rgba(255, 255, 255, 0.7);
 }
 
-/* ===== Project Ticker Animation & Styles ===== */
-@keyframes scroll {
+/* ===== Project Ticker ===== */
+@keyframes project-ticker-scroll {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-33.33%); } /* 因为复制了3份，移动1/3即可无缝循环 */
+  100% { transform: translateX(-33.33%); }
 }
 
-.animate-scroll {
-  animation: scroll 40s linear infinite;
+.project-ticker {
+  padding: 0 0 1.25rem;
+}
+
+.project-ticker__header {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0.55rem;
+  color: rgba(237, 247, 255, 0.88);
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(0.72rem, 1.4vw, 0.92rem);
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-shadow: 0 0 12px rgba(59, 130, 246, 0.42);
+}
+
+.project-ticker__header i {
+  display: block;
+  width: clamp(36px, 7vw, 72px);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(96, 165, 250, 0.72), transparent);
+}
+
+.project-ticker__viewport {
+  position: relative;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  padding: 0.45rem 0 0.85rem;
+}
+
+.project-ticker__edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
+  width: min(9vw, 120px);
+  pointer-events: none;
+}
+
+.project-ticker__edge--left {
+  left: 0;
+  background: linear-gradient(90deg, rgba(2, 6, 23, 0.92), transparent);
+}
+
+.project-ticker__edge--right {
+  right: 0;
+  background: linear-gradient(270deg, rgba(2, 6, 23, 0.92), transparent);
+}
+
+.project-ticker__track {
+  display: flex;
+  gap: 18px;
+  width: max-content;
+  white-space: nowrap;
+  animation: project-ticker-scroll 68s linear infinite;
+}
+
+.project-ticker__track:hover {
+  animation-play-state: paused;
+}
+
+.project-card {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  width: min(82vw, 330px);
+  height: 104px;
+  overflow: hidden;
+  border: 1px solid rgba(147, 197, 253, 0.16);
+  border-radius: 8px;
+  background: rgba(2, 6, 23, 0.42);
+  color: #edf7ff;
+  text-decoration: none !important;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.28);
+  backdrop-filter: blur(14px) saturate(118%);
+  -webkit-backdrop-filter: blur(14px) saturate(118%);
+  transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease, background 220ms ease;
+}
+
+.project-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.07), transparent);
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.project-card:hover {
+  border-color: rgba(96, 165, 250, 0.56);
+  background: rgba(2, 6, 23, 0.58);
+  box-shadow: 0 0 24px rgba(59, 130, 246, 0.26);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.project-card:hover::after {
+  opacity: 1;
+}
+
+.project-card__media {
+  position: relative;
+  width: 38%;
+  height: 100%;
+  overflow: hidden;
+  background: rgba(15, 23, 42, 0.56);
+}
+
+.project-card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent, rgba(2, 6, 23, 0.78)),
+    rgba(2, 6, 23, 0.18);
+}
+
+.project-card__image {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.78;
+  filter: saturate(0.82) contrast(0.95);
+  transition: transform 420ms ease, opacity 220ms ease, filter 220ms ease;
+}
+
+.project-card:hover .project-card__image {
+  opacity: 0.96;
+  filter: saturate(1) contrast(1);
+  transform: scale(1.06);
+}
+
+.project-card__body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 62%;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  padding: 15px 16px;
+}
+
+.project-card__body h3 {
+  margin: 0;
+  overflow: hidden;
+  color: #f8fbff;
+  font-size: 0.96rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.project-card__tags {
+  display: flex;
+  gap: 6px;
+  overflow: hidden;
+}
+
+.project-card__tags span {
+  flex: 0 0 auto;
+  border: 1px solid rgba(147, 197, 253, 0.12);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(226, 241, 255, 0.72);
+  font-size: 0.63rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 4px 6px;
 }
 
 .hover\:tw-pause-animation:hover {
@@ -228,6 +400,41 @@ html[data-theme='dark'] .DocSearch-Search-Icon {
 .tw-mask-image-linear-gradient {
   mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+@media (max-width: 767px) {
+  .project-ticker {
+    padding-bottom: 0.9rem;
+  }
+
+  .project-ticker__header {
+    margin-inline: auto;
+  }
+
+  .project-ticker__viewport {
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .project-ticker__viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .project-ticker__edge {
+    display: none;
+  }
+
+  .project-ticker__track {
+    animation: none;
+    gap: 12px;
+    padding: 0 16px;
+  }
+
+  .project-card {
+    width: min(82vw, 300px);
+    scroll-snap-align: center;
+  }
 }
 
 /* ===== Glitch Effect Animation ===== */

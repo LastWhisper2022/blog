@@ -160,12 +160,6 @@ const Hero = () => {
 
             {/* 精选作品区域 */}
             <div className="tw-relative tw-z-20 tw-mt-auto tw-shrink-0">
-                <div className="tw-container tw-mx-auto tw-px-4 tw-mb-2">
-                    <h2 className="tw-text-xl md:tw-text-2xl tw-font-bold tw-text-center md:tw-text-left tw-mb-2 tw-text-white" style={{ fontFamily: "'Orbitron', sans-serif" }}>
-                        我的作品
-                    </h2>
-                    <div className="tw-h-1 tw-w-16 tw-bg-blue-500 tw-mx-auto md:tw-mx-0"></div>
-                </div>
                 <ProjectTicker />
             </div>
         </div>
