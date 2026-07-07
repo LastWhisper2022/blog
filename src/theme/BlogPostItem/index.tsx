@@ -16,6 +16,16 @@ import Comment from '@site/src/components/Comment';
 
 const PASSWORD_LEVEL_KEY = 'password_level';
 
+type BlogPostFrontMatter = {
+  image?: string;
+};
+
+type BlogPostMetadataWithAssets = {
+  assets?: {
+    image?: string;
+  };
+};
+
 function getTodayPassword() {
   const now = new Date();
   const y = now.getFullYear();
@@ -52,10 +62,8 @@ export default function BlogPostItem({children, className}: Props): ReactNode {
   const [isUnlocked, setIsUnlocked] = useState(false);
 
   const isLifePost = metadata.tags?.some((tag) => tag.label === '生活');
-  // @ts-ignore
-  const assetsImage = (metadata as any).assets?.image;
-  // @ts-ignore
-  let image = assetsImage || frontMatter.image || '/img/default.png';
+  const assetsImage = (metadata as BlogPostMetadataWithAssets).assets?.image;
+  const image = assetsImage || (frontMatter as BlogPostFrontMatter).image || '/img/default.png';
   const containerClassName = useContainerClassName();
   const dateTimeFormat = useDateTimeFormat({
     day: 'numeric',
@@ -66,6 +74,13 @@ export default function BlogPostItem({children, className}: Props): ReactNode {
 
   const formatDate = (blogDate: string) =>
     dateTimeFormat.format(new Date(blogDate));
+
+  useEffect(() => {
+    if (!isBlogPostPage || !isLifePost) return;
+    setIsUnlocked(false);
+    setInputPassword('');
+    setAuthError('');
+  }, [isBlogPostPage, isLifePost, permalink]);
 
   if (!isBlogPostPage) {
      return (
@@ -153,13 +168,6 @@ export default function BlogPostItem({children, className}: Props): ReactNode {
     </Link>
      );
   }
-
-  useEffect(() => {
-    if (!isBlogPostPage || !isLifePost) return;
-    setIsUnlocked(false);
-    setInputPassword('');
-    setAuthError('');
-  }, [isBlogPostPage, isLifePost, permalink]);
 
   const handlePasswordSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

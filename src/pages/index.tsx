@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import Hero from "../components/Hero";
-import Head from "@docusaurus/Head";
 
 export default function Home(): ReactNode {
   const { siteConfig } = useDocusaurusContext();
@@ -21,8 +20,6 @@ export default function Home(): ReactNode {
   return (
     <Layout title={siteConfig.title}>
       <Hero/>
-      <main>
-      </main>
     </Layout>
   );
 }

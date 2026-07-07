@@ -44,6 +44,10 @@ function generateBlogList() {
     const filePath = path.join(BLOG_DIR, file);
     const content = fs.readFileSync(filePath, 'utf-8');
     const frontMatter = parseFrontMatter(content);
+
+    if (frontMatter.draft === true || frontMatter.draft === 'true') {
+      return;
+    }
     
     if (frontMatter.title) {
       let permalink = '/blog/';

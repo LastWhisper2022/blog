@@ -32,13 +32,33 @@ function BlogListPageMetadata(props: Props): ReactNode {
 import ClientPaginator from './ClientPaginator';
 import { Badge } from "@site/src/components/ui/badge";
 
+const ITEMS_PER_PAGE = 6;
+
+type BlogListItem = Props['items'][number];
+
+function isString(value: unknown): value is string {
+  return typeof value === 'string' && value.length > 0;
+}
+
+function getItemTagLabels(item: BlogListItem): string[] {
+  const metadataTags =
+    item.content?.metadata?.tags
+      ?.map((tag) => tag.label)
+      .filter(isString) ?? [];
+
+  const frontMatter = item.content?.frontMatter as {tags?: unknown} | undefined;
+  const frontMatterTags = Array.isArray(frontMatter?.tags)
+    ? frontMatter.tags.filter(isString)
+    : [];
+
+  return Array.from(new Set([...metadataTags, ...frontMatterTags]));
+}
+
 function BlogListPageContent(props: Props): ReactNode {
   const {metadata, items, sidebar} = props;
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const ITEMS_PER_PAGE =6; // Increased to ensure all posts are shown
 
-  // Reset page when category changes
   const handleCategoryChange = (category: string | null) => {
     setSelectedCategory(category);
     setCurrentPage(1);
@@ -47,44 +67,16 @@ function BlogListPageContent(props: Props): ReactNode {
   const categories = useMemo(() => {
     const tagsMap = new Map<string, number>();
     items.forEach(item => {
-      // Strategy 1: Metadata tags (objects with label)
-      const tags = item.content?.metadata?.tags;
-      if (tags && Array.isArray(tags) && tags.length > 0) {
-        tags.forEach(tag => {
-           if (tag && tag.label) {
-             tagsMap.set(tag.label, (tagsMap.get(tag.label) || 0) + 1);
-           }
-        });
-      } else {
-         // Strategy 2: FrontMatter tags (strings)
-         // @ts-ignore
-         const fmTags = item.content?.frontMatter?.tags;
-         if (fmTags && Array.isArray(fmTags)) {
-            fmTags.forEach(tag => {
-                if (typeof tag === 'string') {
-                    tagsMap.set(tag, (tagsMap.get(tag) || 0) + 1);
-                }
-            });
-         }
-      }
+      getItemTagLabels(item).forEach((tag) => {
+        tagsMap.set(tag, (tagsMap.get(tag) || 0) + 1);
+      });
     });
     return Array.from(tagsMap.entries()).sort((a, b) => b[1] - a[1]).map(e => e[0]);
   }, [items]);
 
   const filteredItems = useMemo(() => {
     if (!selectedCategory) return items;
-    return items.filter(item => {
-      const tags = item.content?.metadata?.tags;
-      const hasMetadataTag = tags?.some(tag => tag.label === selectedCategory);
-      if (hasMetadataTag) return true;
-
-      // @ts-ignore
-      const fmTags = item.content?.frontMatter?.tags;
-      if (fmTags && Array.isArray(fmTags)) {
-          return fmTags.includes(selectedCategory);
-      }
-      return false;
-    });
+    return items.filter((item) => getItemTagLabels(item).includes(selectedCategory));
   }, [items, selectedCategory]);
 
   const paginatedItems = useMemo(() => {

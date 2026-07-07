@@ -22,6 +22,8 @@ const THEMES = [
 
 const DANMAKU_TRACKS = [10, 16, 22, 28, 34];
 
+const getDanmakuDuration = (index: number) => 20 + (index % DANMAKU_TRACKS.length) * 2.5;
+
 const getFormattedTime = () => {
     const now = new Date();
     return now.toLocaleString('zh-CN', {
@@ -81,13 +83,17 @@ const Hero = () => {
     const textRef = useRef<HTMLDivElement>(null);
 
     // 背景资源
-    const pcBgUrl = useBaseUrl("/img/pc-bg.mp4");
-    const mobileBgUrl = useBaseUrl("/img/mobile-bg.mp4");
+    const pcBgUrl = useBaseUrl("/img/pc-bg-optimized.mp4");
+    const mobileBgUrl = useBaseUrl("/img/mobile-bg-optimized.mp4");
+    const pcPosterUrl = useBaseUrl("/img/pc-bg-poster.jpg");
+    const mobilePosterUrl = useBaseUrl("/img/mobile-bg-poster.jpg");
 
     // 移动端视频控制状态
     const videoRef = useRef<HTMLVideoElement>(null);
     const pcVideoRef = useRef<HTMLVideoElement>(null);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isDesktop, setIsDesktop] = useState(false);
+    const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
     const [loopCount, setLoopCount] = useState(0);
 
     const currentTheme = THEMES[loopCount % THEMES.length];
@@ -107,15 +113,48 @@ const Hero = () => {
         return () => clearInterval(timer);
     }, []);
 
+    useEffect(() => {
+        const mediaQuery = window.matchMedia('(min-width: 768px)');
+        const updateViewport = () => setIsDesktop(mediaQuery.matches);
+
+        updateViewport();
+        mediaQuery.addEventListener('change', updateViewport);
+        return () => mediaQuery.removeEventListener('change', updateViewport);
+    }, []);
+
+    useEffect(() => {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
+        const timer = window.setTimeout(() => setShouldLoadVideo(true), 800);
+        return () => window.clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        if (!shouldLoadVideo) return;
+
+        const activeVideo = isDesktop ? pcVideoRef.current : videoRef.current;
+        if (!activeVideo) return;
+
+        activeVideo.load();
+        void activeVideo.play();
+    }, [isDesktop, shouldLoadVideo]);
+
     // 切换视频播放状态
     const togglePlay = () => {
-        if (videoRef.current) {
-            if (isPlaying) {
-                videoRef.current.pause();
-            } else {
-                videoRef.current.play();
-            }
-            setIsPlaying(!isPlaying);
+        if (!shouldLoadVideo) {
+            setShouldLoadVideo(true);
+            setIsPlaying(true);
+            return;
+        }
+
+        const video = videoRef.current;
+        if (!video) return;
+
+        if (video.paused) {
+            void video.play();
+        } else {
+            video.pause();
         }
     };
 
@@ -127,7 +166,8 @@ const Hero = () => {
 
         if (isMobile) {
             setIsPlaying(true);
-            if (videoRef.current) videoRef.current.play();
+            setShouldLoadVideo(true);
+            if (videoRef.current) void videoRef.current.play();
 
             // 移动端：播放5秒视频动画后跳转
             setTimeout(() => {
@@ -144,7 +184,7 @@ const Hero = () => {
         return {
             post,
             track: index % DANMAKU_TRACKS.length,
-            duration: 20 + Math.random() * 10,
+            duration: getDanmakuDuration(index),
             delay: index * 3
         };
     }), []);
@@ -160,10 +200,13 @@ const Hero = () => {
                         autoPlay
                         muted
                         playsInline
+                        preload={shouldLoadVideo ? "metadata" : "none"}
+                        onPlay={() => setIsPlaying(true)}
+                        onPause={() => setIsPlaying(false)}
                         className="tw-w-full tw-h-full tw-object-cover"
-                        poster={useBaseUrl("/img/mobile-init-bg.png")}
+                        poster={mobilePosterUrl}
                     >
-                        <source src={mobileBgUrl} type="video/mp4" />
+                        {!isDesktop && shouldLoadVideo && <source src={mobileBgUrl} type="video/mp4" />}
                     </video>
                     {/* 移动端播放/暂停控制按钮 */}
                     <button
@@ -183,9 +226,11 @@ const Hero = () => {
                         loop
                         muted
                         playsInline
+                        preload={shouldLoadVideo ? "metadata" : "none"}
+                        poster={pcPosterUrl}
                         className="tw-w-full tw-h-full tw-object-cover tw-absolute tw-inset-0"
                     >
-                        <source src={pcBgUrl} type="video/mp4" />
+                        {isDesktop && shouldLoadVideo && <source src={pcBgUrl} type="video/mp4" />}
                     </video>
                 </div>
             </div>
@@ -193,9 +238,9 @@ const Hero = () => {
             {/* 弹幕层 */}
         <div className={`tw-hidden md:tw-block tw-absolute tw-inset-0 tw-z-10 tw-overflow-hidden tw-pointer-events-none tw-transition-opacity tw-duration-1000 ${isClicked ? 'tw-opacity-0 md:tw-opacity-100' : 'tw-opacity-100'}`}>
                 <div className="tw-relative tw-w-full tw-h-full tw-pointer-events-auto">
-                    {danmakuItems.map((item, index) => (
+                    {danmakuItems.map((item) => (
                         <DanmakuItem
-                            key={index}
+                            key={item.post.permalink}
                             post={item.post}
                             top={`${DANMAKU_TRACKS[item.track]}%`}
                             duration={item.duration}
