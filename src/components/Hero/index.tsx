@@ -136,7 +136,7 @@ const Hero = () => {
                     className="tw-absolute tw-top-[25%] md:tw-top-[20%] tw-left-0 tw-w-full tw-flex tw-flex-col tw-items-center tw-z-20"
                 >
                     <div className="tw-h-[220px] md:tw-h-[300px] md:[@media(max-height:800px)]:tw-h-[230px] tw-w-full tw-max-w-5xl tw-flex tw-items-center tw-justify-center tw-relative tw-overflow-hidden">
-                        <div className="hero-now-module" aria-label="时间易逝，感受当下。">
+                        <div className="hero-now-module" aria-label="TIME FADES, FEEL NOW">
                             <div className="hero-now-axis" aria-hidden="true">
                                 <span className="hero-now-axis__past">PAST</span>
                                 <i></i>
@@ -146,8 +146,9 @@ const Hero = () => {
                             </div>
                             <div className="hero-now-dot" aria-hidden="true" />
                             <h1 className="hero-now-title">
-                                时间易逝，感受<span>当下</span>
+                                T.F.<span> / F.N.</span>
                             </h1>
+                            <p className="hero-now-subtitle">TIME FADES, FEEL NOW</p>
                             <div className="hero-now-flow" aria-hidden="true">
                                 <i></i>
                                 <b></b>
